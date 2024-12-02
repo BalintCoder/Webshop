@@ -1,6 +1,6 @@
 namespace WebshopProject.Backend.Models;
 
-public class ItemModell
+public class ItemModel
 {
     public string Name { get; set; }
     
