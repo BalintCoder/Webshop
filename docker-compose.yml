@@ -1,0 +1,28 @@
+﻿services:
+  webshop-db:
+    image: mysql:8.0
+    container_name: webshop-db
+    environment:
+      MYSQL_ROOT_PASSWORD: "P@ssw0rd2024!MySQL"
+      MYSQL_DATABASE: webshopdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: firstpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - webshop-db-data:/var/lib/mysql
+
+  webshop-backend:
+    build:
+      context: .
+      dockerfile: WebshopProject/Dockerfile
+    container_name: webshop-backend
+    depends_on:
+      - webshop-db
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=webshop-db;Database=webshopdb;User=root;Password=P@ssw0rd2024!MySQL;
+    ports:
+      - "8080:8080"  
+    
+volumes:
+  webshop-db-data:

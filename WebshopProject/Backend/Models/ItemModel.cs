@@ -2,8 +2,10 @@ namespace WebshopProject.Backend.Models;
 
 public class ItemModel
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     
+    public string Img { get; set; }
     public double Weight { get; set; }
     
     public string MadeOf { get; set; }
