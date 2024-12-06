@@ -10,7 +10,7 @@ public interface IItemModelService
 
     Task AddItemAsync(ItemModel itemModel);
 
-    Task UpdateItem(ItemModel itemModel);
+    Task UpdateItem(Guid id, UpdateItemDTO updateItemDto);
     
-    Task DeleteItemAsync(ItemModel itemModel);
+    Task DeleteItemAsync(Guid id);
 }

@@ -29,16 +29,17 @@ public class ItemRepository : IItemRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task UpdateItemAsync(ItemModel item)
+    public async Task UpdateItemAsync(Guid id)
     {
+        var item = await _dbContext.ItemModels.FirstOrDefaultAsync(i => i.Id == id);
         _dbContext.Update(item);
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task DeleteItemAsync(ItemModel itemModel)
+    public async Task DeleteItemAsync(Guid id)
     {
-
-        _dbContext.Remove(itemModel);
+        var item = await _dbContext.ItemModels.FirstOrDefaultAsync(i => i.Id == id);
+        _dbContext.Remove(item);
         await _dbContext.SaveChangesAsync();
     }
 }

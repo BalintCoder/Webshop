@@ -26,14 +26,28 @@ public class ItemModelService : IItemModelService
     {
         await _itemRepository.AddItemAsync(itemModel);
     }
+    
 
-    public async Task UpdateItem(ItemModel itemModel)
+    public async Task UpdateItem(Guid id, UpdateItemDTO updateItemDto)
     {
-        await _itemRepository.UpdateItemAsync(itemModel);
+        var item = await _itemRepository.GetItemByIdAsync(id);
+
+        if (item == null)
+        {
+            throw new KeyNotFoundException($"Item with ID {id} not found.");
+        }
+        
+        item.Name = updateItemDto.Name;
+        item.Img = updateItemDto.Img;
+        item.Weight = updateItemDto.Weight;
+        item.MadeOf = updateItemDto.MadeOf;
+        item.Price = updateItemDto.Price;
+
+        await _itemRepository.UpdateItemAsync(id);
     }
 
-    public async Task DeleteItemAsync(ItemModel itemModel)
+    public async Task DeleteItemAsync(Guid id)
     {
-        await _itemRepository.DeleteItemAsync(itemModel);
+        await _itemRepository.DeleteItemAsync(id);
     }
 }

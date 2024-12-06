@@ -16,7 +16,7 @@ public class ItemModelController : ControllerBase
 
 
 
-    [HttpGet]
+    [HttpGet("GetAll")]
     public async Task<ActionResult<IEnumerable<ItemModel>>> GetAll()
     {
         try
@@ -61,6 +61,36 @@ public class ItemModelController : ControllerBase
         catch (Exception e)
         {
             return StatusCode(500, "An error occurred while adding the item.");
+        }
+    }
+
+    [HttpDelete("{ItemId}")]
+    public async Task<IActionResult> DeleteItem(Guid ItemId)
+    {
+        try
+        {
+            await _itemModelService.DeleteItemAsync(ItemId);
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "An error occurred while deleting the item.");
+           
+        }
+    }
+    
+    [HttpPatch("{ItemId}")]
+    public async Task<IActionResult> UpdateItem(Guid ItemId, [FromBody] UpdateItemDTO updateItemDto)
+    {
+        try
+        {
+            await _itemModelService.UpdateItem(ItemId, updateItemDto);
+            return NoContent();
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "An error occurred while updating the item.");
+           
         }
     }
     
