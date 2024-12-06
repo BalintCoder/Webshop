@@ -12,4 +12,5 @@ public class UpdateItemDTO
     public string MadeOf { get; set; }
     
     public double Price { get; set; }
+    
 }
