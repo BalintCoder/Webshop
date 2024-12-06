@@ -13,7 +13,7 @@ builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IItemModelService, ItemModelService>();
 
 builder.Services.AddDbContext<ItemDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("WebshopDb")));
+    options.UseMySQL(builder.Configuration.GetConnectionString("WebshopDb")?? throw new Exception()));
 
 // Beállítjuk az adatbázis kapcsolatot
 
