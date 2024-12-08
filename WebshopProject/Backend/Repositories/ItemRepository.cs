@@ -29,9 +29,21 @@ public class ItemRepository : IItemRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task UpdateItemAsync(Guid id)
+    public async Task UpdateItemAsync(Guid id, UpdateItemDTO updateItemDto)
     {
         var item = await _dbContext.ItemModels.FirstOrDefaultAsync(i => i.Id == id);
+
+        if (item == null)
+        {
+            throw new KeyNotFoundException($"Item with the {id} does not exist");
+        }
+        
+        item.Name = updateItemDto.Name;
+        item.Img = updateItemDto.Img;
+        item.MadeOf = updateItemDto.MadeOf;
+        item.Price = updateItemDto.Price;
+        item.Weight = updateItemDto.Weight;
+        
         _dbContext.Update(item);
         await _dbContext.SaveChangesAsync();
     }
