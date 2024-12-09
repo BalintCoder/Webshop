@@ -6,6 +6,8 @@ using WebshopProject.Backend.Repositories;
 using WebshopProject.Backend.Services;
 using WebshopProject.Data;
 using DotNetEnv;
+using Microsoft.AspNetCore.Identity;
+using WebshopProject.Backend.Services.Authentication;
 
 DotNetEnv.Env.Load();
 
@@ -17,6 +19,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IItemModelService, ItemModelService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddDbContext<ItemDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("WebshopDb")?? throw new Exception()));
@@ -44,6 +47,20 @@ builder.Services
                 ),
         };
     });
+
+builder.Services
+    .AddIdentityCore<IdentityUser>(options =>
+    {
+        options.SignIn.RequireConfirmedAccount = false;
+        options.User.RequireUniqueEmail = true;
+        options.Password.RequireDigit = false;
+        options.Password.RequiredLength = 6;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequireLowercase = false;
+
+    })
+    .AddEntityFrameworkStores<UserContext>();
 
 var app = builder.Build();
 
