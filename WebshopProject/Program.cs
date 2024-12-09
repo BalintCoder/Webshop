@@ -20,6 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IItemModelService, ItemModelService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddDbContext<ItemDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("WebshopDb")?? throw new Exception()));
