@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebshopProject.Backend.Models;
 using WebshopProject.Backend.Services;
@@ -16,7 +17,7 @@ public class ItemModelController : ControllerBase
 
 
 
-    [HttpGet("GetAll")]
+    [HttpGet("GetAll"), Authorize]
     public async Task<ActionResult<IEnumerable<ItemModel>>> GetAll()
     {
         try
