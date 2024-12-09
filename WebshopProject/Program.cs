@@ -21,7 +21,9 @@ builder.Services.AddScoped<IItemModelService, ItemModelService>();
 builder.Services.AddDbContext<ItemDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("WebshopDb")?? throw new Exception()));
 
-
+builder.Services.AddDbContext<UserContext>(options =>
+    options.UseMySQL(builder.Configuration.GetConnectionString("WebshopDb") 
+                     ?? throw new Exception("WebshopDb connection string is not configured!")));
 
 
 builder.Services
@@ -55,6 +57,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseHttpsRedirection();
 app.Run();
