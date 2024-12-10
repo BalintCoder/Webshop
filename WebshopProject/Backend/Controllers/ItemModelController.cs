@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebshopProject.Backend.Models;
 using WebshopProject.Backend.Services;
@@ -16,7 +17,7 @@ public class ItemModelController : ControllerBase
 
 
 
-    [HttpGet("GetAll")]
+    [HttpGet("GetAll"), Authorize(Roles = "User, Admin")]
     public async Task<ActionResult<IEnumerable<ItemModel>>> GetAll()
     {
         try
@@ -31,7 +32,7 @@ public class ItemModelController : ControllerBase
         }
     }
     
-    [HttpGet("{id}")]
+    [HttpGet("{id}"), Authorize(Roles = "Admin")]
     public async Task<ActionResult<ItemModel>> GetItemById(Guid id)
     {
         var item = await _itemModelService.GetItemByIdAsync(id);
@@ -39,7 +40,7 @@ public class ItemModelController : ControllerBase
     }
 
 
-    [HttpPost("AddNewItem")]
+    [HttpPost("AddNewItem"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> AddItem([FromBody] ItemModel itemModel)
     {
         Console.WriteLine("AddItem endpoint called");
@@ -64,7 +65,7 @@ public class ItemModelController : ControllerBase
         }
     }
 
-    [HttpDelete("{ItemId}")]
+    [HttpDelete("{ItemId}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteItem(Guid ItemId)
     {
         try
@@ -79,7 +80,7 @@ public class ItemModelController : ControllerBase
         }
     }
     
-    [HttpPatch("{ItemId}")]
+    [HttpPatch("{ItemId}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateItem(Guid ItemId, [FromBody] UpdateItemDTO updateItemDto)
     {
         try
