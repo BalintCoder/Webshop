@@ -8,4 +8,5 @@ public class CreateUserModel
     
     public string Password { get; set; }
     
+    
 }
