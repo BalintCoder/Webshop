@@ -52,6 +52,7 @@ builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IItemModelService, ItemModelService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<AuthenticationSeeder>();
 
 builder.Services.AddDbContext<ItemDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("WebshopDb")?? throw new Exception()));
@@ -92,9 +93,15 @@ builder.Services
         options.Password.RequireLowercase = false;
 
     })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<UserContext>();
 
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+var authenticationSeeder = scope.ServiceProvider.GetRequiredService<AuthenticationSeeder>();
+authenticationSeeder.AddRoles();
+
 
 app.MapControllers();
 

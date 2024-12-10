@@ -17,7 +17,7 @@ public class ItemModelController : ControllerBase
 
 
 
-    [HttpGet("GetAll"), Authorize]
+    [HttpGet("GetAll"), Authorize(Roles = "User, Admin")]
     public async Task<ActionResult<IEnumerable<ItemModel>>> GetAll()
     {
         try
@@ -40,7 +40,7 @@ public class ItemModelController : ControllerBase
     }
 
 
-    [HttpPost("AddNewItem")]
+    [HttpPost("AddNewItem"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> AddItem([FromBody] ItemModel itemModel)
     {
         Console.WriteLine("AddItem endpoint called");

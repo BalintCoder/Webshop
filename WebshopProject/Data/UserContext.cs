@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebshopProject.Data;
 
-public class UserContext : IdentityUserContext<IdentityUser>
+public class UserContext : IdentityDbContext<IdentityUser, IdentityRole, string>
 {
     public UserContext(DbContextOptions<UserContext> options)
         : base(options)

@@ -4,5 +4,5 @@ namespace WebshopProject.Backend.Services.Authentication;
 
 public interface ITokenService
 {
-    public string CreateToken(IdentityUser identityUser);
+    public string CreateToken(IdentityUser identityUser, string role);
 }
