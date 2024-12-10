@@ -32,7 +32,7 @@ public class ItemModelController : ControllerBase
         }
     }
     
-    [HttpGet("{id}")]
+    [HttpGet("{id}"), Authorize(Roles = "Admin")]
     public async Task<ActionResult<ItemModel>> GetItemById(Guid id)
     {
         var item = await _itemModelService.GetItemByIdAsync(id);
@@ -65,7 +65,7 @@ public class ItemModelController : ControllerBase
         }
     }
 
-    [HttpDelete("{ItemId}")]
+    [HttpDelete("{ItemId}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteItem(Guid ItemId)
     {
         try
@@ -80,7 +80,7 @@ public class ItemModelController : ControllerBase
         }
     }
     
-    [HttpPatch("{ItemId}")]
+    [HttpPatch("{ItemId}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateItem(Guid ItemId, [FromBody] UpdateItemDTO updateItemDto)
     {
         try
