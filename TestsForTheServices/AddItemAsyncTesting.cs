@@ -32,5 +32,6 @@ public class AddItemAsyncTesting
          var items = await service.GetAllAsync();
          
          Assert.Equal(1, items.Count());
+         
     }
 }
