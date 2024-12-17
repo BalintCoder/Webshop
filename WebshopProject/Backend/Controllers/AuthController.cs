@@ -51,5 +51,6 @@ public class AuthController : ControllerBase
         }
 
         return Ok(new AuthResponse(result.Email, result.UserName, result.Token));
+        
     }
 }
