@@ -1,0 +1,52 @@
+import {useEffect, useState} from "react";
+import "/src/Styling/mainpage.css"
+import kep from "../Images/kep.jpg"
+export default  function MainPageComponent ()  {
+    
+    const [items, setItems] = useState([])
+
+    const fetchItems = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch("/api/ItemModel/GetAll", {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Item fetch failed');
+            }
+
+            const data = await response.json();
+            setItems(data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    
+    useEffect(() =>{
+        fetchItems()
+    },[])
+
+    return (
+        <div className="itemholder">
+            {items.map((item) => (
+                <div className="individualitem" key={item.id}>
+                    <div className="itemnamecss">
+                        <h3>Name of the item: {item.name}</h3>
+                    </div>
+                    {/* Csak az adott elemhez jelenítsd meg a képet */}
+                    {item.name === "pitypang" && (
+                        <img src={kep} alt={`${item.name}`} className="item-image" />
+                    )}
+                    <h3> Weight of the item: {item.weight}</h3>
+                    <h3> Made of material: {item.madeOf}</h3>
+                    <h3> The price of the Item: {item.price}</h3>
+                </div>
+            ))}
+        </div>
+    );
+}

@@ -1,0 +1,15 @@
+.itemnamecss {
+    
+    color: #535bf2;
+}
+
+.individualitem {
+    border: 2px solid black; 
+    padding: 10px;
+    
+}
+
+.item-image {
+    width: 350px; /* vagy százalékosan: 50% */
+    
+}

@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom";
+import MainPageComponent from "./MainPageComponent.jsx";
 
 export default function MainPage ()
 {
@@ -10,7 +11,9 @@ export default function MainPage ()
     }
     return (
         <div>
-            <h1>This is the main page</h1>
+            <h1>
+                <MainPageComponent/>
+            </h1>
             <button onClick={handleLogOut}>Logout</button>
         </div>
 

@@ -22,7 +22,9 @@ export default function Loginpage () {
                throw new Error("Login Failed")
            }
            const data = await response.json()
-           const token = data.token
+           console.log(data)
+           const token = data.password
+           console.log(token)
           
            localStorage.setItem("token", token)
            navigate("/mainPage");
