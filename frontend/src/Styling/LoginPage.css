@@ -1,0 +1,70 @@
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #f0f2f5; 
+}
+
+.formContainer .form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 400px; 
+    box-sizing: border-box;
+}
+
+.formContainer .emailContainer,
+.formContainer .passwordContainer {
+    margin-bottom: 1.5rem; 
+}
+
+.formContainer .emailContainer label,
+.formContainer .passwordContainer label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #333;
+}
+
+.formContainer .emailContainer input,
+.formContainer .passwordContainer input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.formContainer .emailContainer input:focus,
+.formContainer .passwordContainer input:focus {
+    outline: none;
+    border-color: #007bff; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.formContainer .buttonholder {
+    text-align: center;
+}
+
+.formContainer .buttonholder button {
+    background-color: #007bff; 
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formContainer .buttonholder button:hover {
+    background-color: #0056b3; 
+}
+
+.formContainer .buttonholder button:active {
+    background-color: #00408a; 
+}
