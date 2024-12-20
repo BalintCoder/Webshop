@@ -1,6 +1,11 @@
 import {useEffect, useState} from "react";
 import "/src/Styling/mainpage.css"
-import kep from "../Images/kep.jpg"
+import kep from "../Images/kepremove.png"
+import kep2 from "../Images/kep2.jpg"
+import kep3 from "../Images/kep3remove.png"
+import kep4 from "../Images/kep4.jpg"
+import kep5 from "../Images/kep5.jpg"
+import kep4removed from "../Images/kep4removed.png"
 export default  function MainPageComponent ()  {
     
     const [items, setItems] = useState([])
@@ -38,13 +43,20 @@ export default  function MainPageComponent ()  {
                     <div className="itemnamecss">
                         <h3>Name of the item: {item.name}</h3>
                     </div>
-                    {/* Csak az adott elemhez jelenítsd meg a képet */}
-                    {item.name === "pitypang" && (
+                  
+                    {item.name === "Ear Shellring" && (
                         <img src={kep} alt={`${item.name}`} className="item-image" />
                     )}
-                    <h3> Weight of the item: {item.weight}</h3>
+                    {item.name === "Flowerous Pendant" && (
+                        <img src={kep4removed} alt={`${item.name}`} className="item-image" />
+                    )}
+                    {item.name === "Mistirous Pendant" && (
+                        <img src={kep3} alt={`${item.name}`} className="item-image" />
+                    )}
+                   
+                    <h3> Weight of the item: {item.weight}g</h3>
                     <h3> Made of material: {item.madeOf}</h3>
-                    <h3> The price of the Item: {item.price}</h3>
+                    <h3> The price of the Item: {item.price} Ft</h3>
                 </div>
             ))}
         </div>

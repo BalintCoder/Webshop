@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../Styling/LoginPage.css"
 export default function Loginpage () {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -54,9 +55,9 @@ export default function Loginpage () {
                            required/>
                     
                 </div>
-
+                <div className="buttonholder">
                 <button type="submit">Login</button>
-
+                </div>
             </form>
 
         </div>
