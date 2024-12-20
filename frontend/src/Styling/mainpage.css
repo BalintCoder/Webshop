@@ -1,0 +1,44 @@
+.itemnamecss {
+    
+    color: #535bf2;
+}
+
+.individualitem {
+    border: 2px solid black; 
+    padding: 10px;
+    
+}
+
+.item-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.header {
+    background-color: #646cff;
+    padding: 2px 200px;
+    margin: 0;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headertitle {
+    text-align: center;
+}
+
+.itemholder {
+    background-color: beige;
+    
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
