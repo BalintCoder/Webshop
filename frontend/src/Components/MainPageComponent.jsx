@@ -7,9 +7,11 @@ import kep4 from "../Images/kep4.jpg"
 import kep5 from "../Images/kep5.jpg"
 import kep4removed from "../Images/kep4removed.png"
 import kep5remove from "../Images/kep5remove.png"
+import {Navigate, useNavigate} from "react-router-dom";
 export default  function MainPageComponent ()  {
     
     const [items, setItems] = useState([])
+    const navigate = useNavigate()
 
     const fetchItems = async () => {
         try {
@@ -32,6 +34,25 @@ export default  function MainPageComponent ()  {
             console.error(error);
         }
     };
+
+    const handleItemClick = async (id) => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(`/api/ItemModel/${id}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
+            const data = await response.json();
+
+            
+            navigate(`/item/${id}`, { state: { item: data } });
+        } catch (error) {
+            console.error("Failed to fetch item details", error);
+        }
+    };
     
     useEffect(() =>{
         fetchItems()
@@ -40,7 +61,7 @@ export default  function MainPageComponent ()  {
     return (
         <div className="itemholder">
             {items.map((item) => (
-                <div className="individualitem" key={item.id}>
+                <div className="individualitem" key={item.id} onClick={() => handleItemClick(item.id)}>
                     <div className="itemnamecss">
                         <h3>Name of the item: {item.name}</h3>
                     </div>
