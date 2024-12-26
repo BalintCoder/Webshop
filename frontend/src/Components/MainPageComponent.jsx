@@ -35,24 +35,10 @@ export default  function MainPageComponent ()  {
         }
     };
 
-    const handleItemClick = async (id) => {
-        try {
-            const token = localStorage.getItem('token');
-            const response = await fetch(`/api/ItemModel/${id}`, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json"
-                }
-            });
-            const data = await response.json();
-
-            
-            navigate(`/item/${id}`, { state: { item: data } });
-        } catch (error) {
-            console.error("Failed to fetch item details", error);
-        }
+    const handleItemClick = (id) => {
+        navigate(`/item/${id}`); // Csak az id-t küldjük át az URL-ben
     };
+    
     
     useEffect(() =>{
         fetchItems()
