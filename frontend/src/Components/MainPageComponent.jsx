@@ -65,9 +65,7 @@ export default  function MainPageComponent ()  {
                         <img src={kep5remove} alt={`${item.name}`} className="item-image" />
                     )}
                    
-                    <h3> Weight of the item: {item.weight}g</h3>
-                    <h3> Made of material: {item.madeOf}</h3>
-                    <h3> The price of the Item: {item.price} Ft</h3>
+                   
                 </div>
             ))}
         </div>

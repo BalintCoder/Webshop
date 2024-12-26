@@ -4,6 +4,7 @@ import kep from "../Images/kepremove.png";
 import kep4removed from "../Images/kep4removed.png";
 import kep3 from "../Images/kep3remove.png";
 import kep5remove from "../Images/kep5remove.png";
+import "../Styling/itemDetails.css"
 
 const ItemDetails = () => {
     const { id } = useParams();
@@ -40,23 +41,30 @@ const ItemDetails = () => {
     }
 
     return (
-        <div>
-            <h1>{item.name}</h1>
-            {item.name === "Ear Shellring" && (
-                <img src={kep} alt={`${item.name}`} className="item-image" />
-            )}
-            {item.name === "Flowerous Pendant" && (
-                <img src={kep4removed} alt={`${item.name}`} className="item-image" />
-            )}
-            {item.name === "Mistirous Pendant" && (
-                <img src={kep3} alt={`${item.name}`} className="item-image" />
-            )}
-            {item.name === "The West" && (
-                <img src={kep5remove} alt={`${item.name}`} className="item-image" />
-            )}
-            <p>Weight: {item.weight}g</p>
-            <p>Material: {item.madeOf}</p>
-            <p>Price: {item.price} Ft</p>
+        <div className="itemholder2">
+                <div className="individualitem" key={item.id}>
+                    <div className="itemnamecss">
+                        <h3>Name of the item: {item.name}</h3>
+                    </div>
+
+                    {item.name === "Ear Shellring" && (
+                        <img src={kep} alt={`${item.name}`} className="item-image"/>
+                    )}
+                    {item.name === "Flowerous Pendant" && (
+                        <img src={kep4removed} alt={`${item.name}`} className="item-image"/>
+                    )}
+                    {item.name === "Mistirous Pendant" && (
+                        <img src={kep3} alt={`${item.name}`} className="item-image"/>
+                    )}
+                    {item.name === "The West" && (
+                        <img src={kep5remove} alt={`${item.name}`} className="item-image"/>
+                    )}
+
+                    <h3> Weight of the item: {item.weight}g</h3>
+                    <h3> Made of material: {item.madeOf}</h3>
+                    <h3> The price of the Item: {item.price} Ft</h3>
+                </div>
+            
         </div>
     );
 };
