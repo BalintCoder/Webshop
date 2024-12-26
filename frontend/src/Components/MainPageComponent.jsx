@@ -6,6 +6,7 @@ import kep3 from "../Images/kep3remove.png"
 import kep4 from "../Images/kep4.jpg"
 import kep5 from "../Images/kep5.jpg"
 import kep4removed from "../Images/kep4removed.png"
+import kep5remove from "../Images/kep5remove.png"
 export default  function MainPageComponent ()  {
     
     const [items, setItems] = useState([])
@@ -52,6 +53,9 @@ export default  function MainPageComponent ()  {
                     )}
                     {item.name === "Mistirous Pendant" && (
                         <img src={kep3} alt={`${item.name}`} className="item-image" />
+                    )}
+                    {item.name === "The West" && (
+                        <img src={kep5remove} alt={`${item.name}`} className="item-image" />
                     )}
                    
                     <h3> Weight of the item: {item.weight}g</h3>
