@@ -1,10 +1,12 @@
 .itemnamecss {
-    
+
     color: #535bf2;
+    display: flex;
+    justify-content: center; /* Vízszintes középre igazítás */
+    align-items: center;  /* Függőleges középre igazítás */
 }
 
 .individualitem {
-    border: 2px solid black; 
     padding: 50px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     
@@ -48,14 +50,19 @@
 .itemholder {
     background-color: beige;
     display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(3, 1fr); 
     gap: 60px; 
     padding: 150px; /*50*/
     justify-items: center;  
     margin: 0;
     box-sizing: border-box;
     
-    
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;  
+    margin-bottom: 10px;
 }
 
 html, body {

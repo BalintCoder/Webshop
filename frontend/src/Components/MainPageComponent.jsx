@@ -8,6 +8,8 @@ import kep5 from "../Images/kep5.jpg"
 import kep4removed from "../Images/kep4removed.png"
 import kep5remove from "../Images/kep5remove.png"
 import {Navigate, useNavigate} from "react-router-dom";
+import kep6 from "../Images/kep6.png"
+import kep7 from "../Images/kep7.png"
 export default  function MainPageComponent ()  {
     
     const [items, setItems] = useState([])
@@ -49,9 +51,9 @@ export default  function MainPageComponent ()  {
             {items.map((item) => (
                 <div className="individualitem" key={item.id} onClick={() => handleItemClick(item.id)}>
                     <div className="itemnamecss">
-                        <h3>Name of the item: {item.name}</h3>
+                        <h3>{item.name}</h3>
                     </div>
-                  
+                    <div className="image-container">
                     {item.name === "Ear Shellring" && (
                         <img src={kep} alt={`${item.name}`} className="item-image" />
                     )}
@@ -64,7 +66,14 @@ export default  function MainPageComponent ()  {
                     {item.name === "The West" && (
                         <img src={kep5remove} alt={`${item.name}`} className="item-image" />
                     )}
-                   
+                        {item.name === "The Mariposa" && (
+                            <img src={kep6} alt={`${item.name}`} className="item-image" />
+                        )}
+                        {item.name === "The BlackPansy" && (
+                            <img src={kep7} alt={`${item.name}`} className="item-image" />
+                        )}
+                        
+                    </div>
                    
                 </div>
             ))}

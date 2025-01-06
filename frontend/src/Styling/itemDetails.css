@@ -3,7 +3,28 @@
     display: grid;
     gap: 60px;
     padding: 150px; /*50*/
-    justify-items: center;
     margin: 0;
     box-sizing: border-box;
+}
+
+.itemnamecss2 {
+    display: flex;
+    justify-content: center;
+}
+
+.image-container2 {
+    width: 80%;   /* 80%-os szélesség, de beállíthatod pixelben is, pl. 500px */
+    height: 500px
+}
+.item-image2 {
+        width: 500px;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        border: 6px solid gray;
+        justify-items: center;
+
+
+    
 }
