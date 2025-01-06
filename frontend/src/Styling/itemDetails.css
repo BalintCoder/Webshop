@@ -10,6 +10,8 @@
 .itemnamecss2 {
     display: flex;
     justify-content: center;
+    color: #535bf2;
+    font-size: 2.3rem;
 }
 
 .image-container2 {
@@ -22,9 +24,28 @@
         object-fit: cover;
         border-radius: 8px;
         margin-bottom: 10px;
-        border: 6px solid gray;
+        border: 3px solid black;
         justify-items: center;
+}
 
+.details2 {
+    display: flex;               
+    flex-direction: column;      
+    justify-content: center;     
+    align-items: center;         
+     position: relative;
+    top: -345px;
+    font-size: 1.5rem;
+}
 
-    
+.individualitem2 {
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.individualitem2:hover
+{
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-color: #535bf2;
 }

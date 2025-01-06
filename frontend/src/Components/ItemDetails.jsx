@@ -5,6 +5,8 @@ import kep4removed from "../Images/kep4removed.png";
 import kep3 from "../Images/kep3remove.png";
 import kep5remove from "../Images/kep5remove.png";
 import "../Styling/itemDetails.css"
+import kep6 from "../Images/kep6.png";
+import kep7 from "../Images/kep7.png";
 
 const ItemDetails = () => {
     const { id } = useParams();
@@ -42,9 +44,9 @@ const ItemDetails = () => {
 
     return (
         <div className="itemholder2">
-                <div className="individualitem" key={item.id}>
+                <div className="individualitem2" key={item.id}>
                     <div className="itemnamecss2">
-                        <h3>Name of the item: {item.name}</h3>
+                        <h3>{item.name}</h3>
                     </div>
                     <div className="image-container2">
                     {item.name === "Ear Shellring" && (
@@ -59,10 +61,19 @@ const ItemDetails = () => {
                     {item.name === "The West" && (
                         <img src={kep5remove} alt={`${item.name}`} className="item-image2"/>
                     )}
+                        {item.name === "The Mariposa" && (
+                            <img src={kep6} alt={`${item.name}`} className="item-image2" />
+                        )}
+                        {item.name === "The BlackPansy" && (
+                            <img src={kep7} alt={`${item.name}`} className="item-image2" />
+                        )}
+                        
                     </div>
-                    <h3> Weight of the item: {item.weight}g</h3>
-                    <h3> Made of material: {item.madeOf}</h3>
-                    <h3> The price of the Item: {item.price} Ft</h3>
+                    <div className="details2">
+                    <h3> Weight: {item.weight}g</h3>
+                    <h3> Material: {item.madeOf}</h3>
+                    <h3> Price: {item.price} Ft</h3>
+                    </div>
                 </div>
             
         </div>
