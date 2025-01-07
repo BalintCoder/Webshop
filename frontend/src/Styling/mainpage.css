@@ -34,14 +34,17 @@
 }
 
 .header {
-    background-color: #646cff;
-    padding: 2px 200px;
+    background-color: #646cff; 
     margin: 0;
     color: white;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    top: -25px;
+    position: fixed; 
+    top: 0; 
+    width: 100%;
+    padding: 3px 5px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    z-index: 100; 
 }
 
 .headertitle {
@@ -75,3 +78,39 @@ html, body {
     
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    
+}
+
+.i {
+    height: 80px;
+    margin: 0;
+    position: fixed;
+    left: 1750px;
+    z-index: 101;
+    filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.7));
+    cursor: pointer;
+}
+
+.f {
+    height: 80px;
+    margin: 0;
+    position: fixed;
+    left: 1550px;
+    z-index: 101;
+    filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.7));
+    cursor: pointer;
+}
+
+.v {
+    height: 80px;
+    margin: 0;
+    position: fixed;
+    left: 1650px;
+    z-index: 101;
+    filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.7));
+    cursor: pointer;
+}
