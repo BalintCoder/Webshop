@@ -6,9 +6,14 @@ import kep3 from "../Images/kep3remove.png"
 import kep4 from "../Images/kep4.jpg"
 import kep5 from "../Images/kep5.jpg"
 import kep4removed from "../Images/kep4removed.png"
+import kep5remove from "../Images/kep5remove.png"
+import {Navigate, useNavigate} from "react-router-dom";
+import kep6 from "../Images/kep6.png"
+import kep7 from "../Images/kep7.png"
 export default  function MainPageComponent ()  {
     
     const [items, setItems] = useState([])
+    const navigate = useNavigate()
 
     const fetchItems = async () => {
         try {
@@ -31,6 +36,11 @@ export default  function MainPageComponent ()  {
             console.error(error);
         }
     };
+
+    const handleItemClick = (id) => {
+        navigate(`/item/${id}`); // Csak az id-t küldjük át az URL-ben
+    };
+    
     
     useEffect(() =>{
         fetchItems()
@@ -39,11 +49,11 @@ export default  function MainPageComponent ()  {
     return (
         <div className="itemholder">
             {items.map((item) => (
-                <div className="individualitem" key={item.id}>
+                <div className="individualitem" key={item.id} onClick={() => handleItemClick(item.id)}>
                     <div className="itemnamecss">
-                        <h3>Name of the item: {item.name}</h3>
+                        <h3>{item.name}</h3>
                     </div>
-                  
+                    <div className="image-container">
                     {item.name === "Ear Shellring" && (
                         <img src={kep} alt={`${item.name}`} className="item-image" />
                     )}
@@ -53,10 +63,18 @@ export default  function MainPageComponent ()  {
                     {item.name === "Mistirous Pendant" && (
                         <img src={kep3} alt={`${item.name}`} className="item-image" />
                     )}
+                    {item.name === "The West" && (
+                        <img src={kep5remove} alt={`${item.name}`} className="item-image" />
+                    )}
+                        {item.name === "The Mariposa" && (
+                            <img src={kep6} alt={`${item.name}`} className="item-image" />
+                        )}
+                        {item.name === "The BlackPansy" && (
+                            <img src={kep7} alt={`${item.name}`} className="item-image" />
+                        )}
+                        
+                    </div>
                    
-                    <h3> Weight of the item: {item.weight}g</h3>
-                    <h3> Made of material: {item.madeOf}</h3>
-                    <h3> The price of the Item: {item.price} Ft</h3>
                 </div>
             ))}
         </div>
