@@ -1,0 +1,51 @@
+.itemholder2 {
+    background-color: beige;
+    display: grid;
+    gap: 60px;
+    padding: 150px; /*50*/
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.itemnamecss2 {
+    display: flex;
+    justify-content: center;
+    color: #535bf2;
+    font-size: 2.3rem;
+}
+
+.image-container2 {
+    width: 80%;   /* 80%-os szélesség, de beállíthatod pixelben is, pl. 500px */
+    height: 500px
+}
+.item-image2 {
+        width: 500px;
+        height: 500px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        border: 3px solid black;
+        justify-items: center;
+}
+
+.details2 {
+    display: flex;               
+    flex-direction: column;      
+    justify-content: center;     
+    align-items: center;         
+     position: relative;
+    top: -345px;
+    font-size: 1.5rem;
+}
+
+.individualitem2 {
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.individualitem2:hover
+{
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-color: #535bf2;
+}
