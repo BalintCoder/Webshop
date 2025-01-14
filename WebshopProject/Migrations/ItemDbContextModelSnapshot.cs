@@ -30,7 +30,6 @@ namespace WebshopProject.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Kind")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("MadeOf")

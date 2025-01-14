@@ -13,4 +13,6 @@ public class ItemModel
     public string MadeOf { get; set; }
     
     public double Price { get; set; }
+    
+    public string? Kind { get; set; }
 }
