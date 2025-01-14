@@ -12,6 +12,10 @@ const ItemDetails = () => {
     const { id } = useParams();
     const [item, setItem] = useState(null);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const fetchItemDetails = async () => {
         try {
             const token = localStorage.getItem("token");
@@ -39,7 +43,7 @@ const ItemDetails = () => {
     }, [id]);
 
     if (!item) {
-        return <p>Loading...</p>;  // Ha az item adat még nem érkezett meg, akkor ezt mutatja
+        return <p>Loading...</p>;  
     }
 
     return (
@@ -70,12 +74,13 @@ const ItemDetails = () => {
                         
                     </div>
                     <div className="details2">
-                    <h3> Weight: {item.weight}g</h3>
-                    <h3> Material: {item.madeOf}</h3>
-                    <h3> Price: {item.price} Ft</h3>
+                        <h3> Weight: {item.weight}g</h3>
+                        <h3> Material: {item.madeOf}</h3>
+                        <h3> Price: {item.price} Ft</h3>
+                        <h3> Kind: {item.kind}</h3>
                     </div>
                 </div>
-            
+
         </div>
     );
 };
