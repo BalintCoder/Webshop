@@ -1,8 +1,6 @@
 import logophoto from "../Images/instaworking.png"
-import logophoto2 from "../Images/facebookworking.png"
 import logophoto3 from "../Images/freal.png"
 import logophoto4 from "../Images/vingreenreal.png"
-import { useNavigate } from "react-router-dom";
 export default function HeaderComponent ({ setFilter })
 {
 

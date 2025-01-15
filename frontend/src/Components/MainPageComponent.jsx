@@ -1,13 +1,10 @@
 import {useEffect, useState} from "react";
 import "/src/Styling/mainpage.css"
 import kep from "../Images/kepremove.png"
-import kep2 from "../Images/kep2.jpg"
 import kep3 from "../Images/kep3remove.png"
-import kep4 from "../Images/kep4.jpg"
-import kep5 from "../Images/kep5.jpg"
 import kep4removed from "../Images/kep4removed.png"
 import kep5remove from "../Images/kep5remove.png"
-import {Navigate, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import kep6 from "../Images/kep6.png"
 import kep7 from "../Images/kep7.png"
 export default function MainPageComponent({ filter }) {
