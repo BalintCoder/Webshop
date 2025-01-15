@@ -44,7 +44,7 @@ export default function Loginpage () {
                     <label>Your Email:</label>
                     <input type="email" id="emailId" name="emailName" value={email} 
                            onChange={(e) => setEmail(e.target.value)}
-                           required/>
+                           required placeholder="Your Email..."/>
                 </div>
                 
                 <div className= "passwordContainer">
@@ -52,7 +52,7 @@ export default function Loginpage () {
                     <label> Your Password</label>
                     <input type= "password" id="passwordId" name="passwordName" value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                           required/>
+                           required placeholder="Your password..."/>
                     
                 </div>
                 <div className="buttonholder">

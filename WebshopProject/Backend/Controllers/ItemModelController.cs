@@ -53,7 +53,8 @@ public class ItemModelController : ControllerBase
                 MadeOf = itemModel.MadeOf,
                 Name = itemModel.Name,
                 Price = itemModel.Price,
-                Weight = itemModel.Weight
+                Weight = itemModel.Weight,
+                Kind = itemModel.Kind
 
             };
             await _itemModelService.AddItemAsync(newItem);
