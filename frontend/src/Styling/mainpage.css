@@ -114,3 +114,22 @@ html, body {
     filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.7));
     cursor: pointer;
 }
+
+.searchbarholder {
+    border-radius: 100px;
+    overflow: hidden; 
+}
+
+.searchbarholder input {
+    width: 20%; 
+    padding: 10px 15px; 
+    border: 2px solid #ccc; 
+    border-radius: 50px; 
+    font-size: 16px; 
+    outline: none; 
+    box-sizing: border-box; 
+}
+
+.searchbarholder input:focus {
+    border-color: #535bf2; 
+}

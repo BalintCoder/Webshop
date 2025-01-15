@@ -3,7 +3,7 @@ import logophoto2 from "../Images/facebookworking.png"
 import logophoto3 from "../Images/freal.png"
 import logophoto4 from "../Images/vingreenreal.png"
 import { useNavigate } from "react-router-dom";
-export default function HeaderComponent ()
+export default function HeaderComponent ({ setFilter })
 {
 
 
@@ -17,11 +17,19 @@ export default function HeaderComponent ()
         window.open("https://www.vinted.hu/member/122433559", "_blank");
     };
     
+    const handleSearchChange = (e) => {
+        setFilter(e.target.value.toLowerCase());
+    }
     
     return (
         <header className="header">
             
             <nav>
+                <div className= "searchbarholder">
+                    <input type={"search"}
+                    placeholder="Search: earring, medal"
+                    onChange={handleSearchChange}/>
+                </div>
                 <div className="logodiv">
                     <img src={logophoto} alt="Logo" className="i" onClick={goToInsta}/>
                     <img src={logophoto3} alt="Logo3" className="f" onClick={goToFacebook}/>
