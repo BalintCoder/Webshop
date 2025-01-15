@@ -79,4 +79,5 @@ export default  function MainPageComponent ()  {
             ))}
         </div>
     );
+    
 }
