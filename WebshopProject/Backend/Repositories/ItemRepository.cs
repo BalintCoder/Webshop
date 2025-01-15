@@ -43,6 +43,7 @@ public class ItemRepository : IItemRepository
         item.MadeOf = updateItemDto.MadeOf;
         item.Price = updateItemDto.Price;
         item.Weight = updateItemDto.Weight;
+        item.Kind = updateItemDto.Kind;
         
         _dbContext.Update(item);
         await _dbContext.SaveChangesAsync();

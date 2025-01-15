@@ -13,4 +13,6 @@ public class UpdateItemDTO
     
     public double Price { get; set; }
     
+    public string? Kind { get; set; }
+    
 }
