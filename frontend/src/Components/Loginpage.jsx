@@ -37,31 +37,30 @@ export default function Loginpage () {
     
     
     return (
-        <div className= "formContainer">
-        
-            <form className= "form" onSubmit={handleLogin}>
-                <div className= "emailContainer">
+        <div className="formContainer">
+            <form className="form" onSubmit={handleLogin}>
+                <div className="emailContainer">
                     <label>Your Email:</label>
-                    <input type="email" id="emailId" name="emailName" value={email} 
+                    <input type="email" id="emailId" name="emailName" value={email}
                            onChange={(e) => setEmail(e.target.value)}
                            required placeholder="Your Email..."/>
                 </div>
-                
-                <div className= "passwordContainer">
-                    
+
+                <div className="passwordContainer">
+
                     <label> Your Password</label>
-                    <input type= "password" id="passwordId" name="passwordName" value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    <input type="password" id="passwordId" name="passwordName" value={password}
+                           onChange={(e) => setPassword(e.target.value)}
                            required placeholder="Your password..."/>
-                    
+
                 </div>
                 <div className="buttonholder">
-                <button type="submit">Login</button>
+                    <button type="submit">Login</button>
                 </div>
             </form>
 
         </div>
-        
+
     )
-    
+
 }
