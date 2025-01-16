@@ -44,6 +44,7 @@ public class ItemRepository : IItemRepository
         item.Price = updateItemDto.Price;
         item.Weight = updateItemDto.Weight;
         item.Kind = updateItemDto.Kind;
+        item.Description = updateItemDto.Description;
         
         _dbContext.Update(item);
         await _dbContext.SaveChangesAsync();

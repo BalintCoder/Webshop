@@ -142,3 +142,9 @@ html, body {
 .searchbarholder input:focus {
     border-color: #535bf2; 
 }
+
+.details2 p {
+    white-space: pre-line;
+    position: relative;
+    top: -70px;
+}

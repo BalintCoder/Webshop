@@ -74,6 +74,7 @@ const ItemDetails = () => {
                         
                     </div>
                     <div className="details2">
+                        <p>Description: {item.description}</p>
                         <h3> Weight: {item.weight}g</h3>
                         <h3> Material: {item.madeOf}</h3>
                         <h3> Price: {item.price} Ft</h3>
