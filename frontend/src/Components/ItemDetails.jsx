@@ -7,7 +7,7 @@ import kep5remove from "../Images/kep5remove.png";
 import "../Styling/itemDetails.css"
 import kep6 from "../Images/kep6.png";
 import kep7 from "../Images/kep7.png";
-
+import cart from "../Images/cart.png"
 const ItemDetails = () => {
     const { id } = useParams();
     const [item, setItem] = useState(null);
@@ -55,22 +55,22 @@ const ItemDetails = () => {
                     </div>
                     <div className="image-container2">
                         {item.name === "Ear Shellring" && (
-                            <img src={kep} alt={`${item.name}`} className="item-image2" />
+                            <img src={kep} alt={`${item.name}`} className="item-image2"/>
                         )}
                         {item.name === "Flowerous Pendant" && (
-                            <img src={kep4removed} alt={`${item.name}`} className="item-image2" />
+                            <img src={kep4removed} alt={`${item.name}`} className="item-image2"/>
                         )}
                         {item.name === "Mistirous Pendant" && (
-                            <img src={kep3} alt={`${item.name}`} className="item-image2" />
+                            <img src={kep3} alt={`${item.name}`} className="item-image2"/>
                         )}
                         {item.name === "The West" && (
-                            <img src={kep5remove} alt={`${item.name}`} className="item-image2" />
+                            <img src={kep5remove} alt={`${item.name}`} className="item-image2"/>
                         )}
                         {item.name === "The Mariposa" && (
-                            <img src={kep6} alt={`${item.name}`} className="item-image2" />
+                            <img src={kep6} alt={`${item.name}`} className="item-image2"/>
                         )}
                         {item.name === "The BlackPansy" && (
-                            <img src={kep7} alt={`${item.name}`} className="item-image2" />
+                            <img src={kep7} alt={`${item.name}`} className="item-image2"/>
                         )}
                     </div>
                     <div className="details2">
@@ -81,6 +81,9 @@ const ItemDetails = () => {
                         <h3>Kind: {item.kind}</h3>
                     </div>
                 </div>
+            </div>
+            <div className="CartIcon">
+                <img src={cart} className="Cart-icon" alt="Cart"/>
             </div>
             <div>
                 <button className="cartButton">Add to Cart</button>

@@ -148,3 +148,12 @@ html, body {
     position: relative;
     top: -70px;
 }
+
+.Cart-icon-main {
+    width: 90px;  
+    height: 90px; 
+    position: fixed;
+    top: 40px;
+    right: 490px;
+    z-index: 1000;
+}

@@ -53,6 +53,7 @@ builder.Services.AddScoped<IItemModelService, ItemModelService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<AuthenticationSeeder>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 
 builder.Services.AddDbContext<ItemDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("WebshopDb")?? throw new Exception()));
@@ -60,6 +61,9 @@ builder.Services.AddDbContext<ItemDbContext>(options =>
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("WebshopDb") 
                      ?? throw new Exception("WebshopDb connection string is not configured!")));
+
+builder.Services.AddDbContext<CartDbContext>(options =>
+    options.UseMySQL(builder.Configuration.GetConnectionString("WebshopDb")?? throw new Exception()));
 
 
 builder.Services

@@ -62,7 +62,18 @@
 
 
 .no-scroll-page {
-    overflow: hidden; /* Ez tiltja le a görgetést */
-    height: 100vh; /* Az oldal magassága 100%-os lesz */
-    position: relative; /* Az esetleges belső pozícionáláshoz */
+    overflow: hidden; 
+    height: 100vh; 
+    position: relative; 
 }
+
+.Cart-icon {
+    width: 90px;  /* Kisebb méret */
+    height: 90px; /* Kisebb méret */
+    position: fixed;
+    top: 100px;
+    right: 220px;
+    z-index: 1000;
+}
+
+
