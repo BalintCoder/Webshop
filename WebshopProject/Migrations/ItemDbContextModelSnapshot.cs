@@ -51,7 +51,7 @@ namespace WebshopProject.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ItemModels");
+                    b.ToTable("ItemModels", (string)null);
                 });
 #pragma warning restore 612, 618
         }

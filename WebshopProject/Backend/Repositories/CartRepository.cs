@@ -37,7 +37,7 @@ public class CartRepository : ICartRepository
 
     public async Task UpdateCartAsync(Cart cart)
     {
-         _cartDbContext.Carts.Update(cart);
+        _cartDbContext.Carts.Update(cart);
         await _cartDbContext.SaveChangesAsync();
     }
 
@@ -53,14 +53,6 @@ public class CartRepository : ICartRepository
 
     public async Task AddCartItemAsync(CartItem cartItem)
     {
-        
-        var item = await _cartDbContext.Set<ItemModel>().FindAsync(cartItem.ItemId);
-        if (item == null)
-        {
-            throw new Exception("Item not found");
-        }
-        
-        cartItem.Item = item;
         await _cartDbContext.CartItems.AddAsync(cartItem);
         await _cartDbContext.SaveChangesAsync();
     }

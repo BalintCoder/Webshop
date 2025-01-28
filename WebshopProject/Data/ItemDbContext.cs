@@ -10,4 +10,16 @@ public class ItemDbContext : DbContext
     }
 
     public DbSet<ItemModel> ItemModels { get; set; }
+    
+    
+    
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        
+        modelBuilder.Entity<ItemModel>()
+            .ToTable("ItemModels"); 
+    }
 }

@@ -89,7 +89,7 @@ namespace WebshopProject.Migrations.CartDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("ItemModel");
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("WebshopProject.Backend.Models.CartItem", b =>
