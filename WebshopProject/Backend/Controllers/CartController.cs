@@ -85,10 +85,24 @@ public class CartController : ControllerBase
                 i.ItemId,
                 i.Quantity,
                 ItemName = i.Item.Name,  
-                ItemPrice = i.Item.Price 
+                ItemPrice = i.Item.Price,
             }).ToList()
         };
         Console.WriteLine($"Items count: {cartWithItems.Items.Count()}");
         return Ok(cartWithItems);
+    }
+
+    [HttpDelete("remove-cart-from-user")]
+
+    public async Task<IActionResult> RemoveCartFromUser(Guid cartId, Guid userId)
+    {
+        var cart = await _cartService.GetCartByUserIdAsync(userId);
+        if (cart == null || cart.Id != cartId)
+        {
+            return NotFound("Cart or user cannot be found");
+        }
+
+        await _cartService.DeleteCartAsync(cartId, userId);
+        return Ok("Cart successfully deleted");
     }
 }

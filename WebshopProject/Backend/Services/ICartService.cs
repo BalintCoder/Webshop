@@ -9,4 +9,6 @@ public interface ICartService
     Task RemoveItemFromCartAsync(Guid cartId, Guid itemId);
     Task<Cart> CreateCartForUserAsync(Guid userId);
     Task<Cart> UpdateCartAsync(Cart cart);
+
+    Task DeleteCartAsync(Guid cartId, Guid userId);
 }

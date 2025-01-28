@@ -6,13 +6,13 @@ namespace WebshopProject.Backend.Repositories;
 
 public class CartRepository : ICartRepository
 {
-    private readonly CartDbContext _cartDbContext;
-
-    public CartRepository(CartDbContext cartDbContext)
+    private readonly WebshopDbContext _cartDbContext;
+    
+    public CartRepository(WebshopDbContext cartDbContext)
     {
         _cartDbContext = cartDbContext;
     }
-
+    
     public async Task<Cart?> GetCartById(Guid cartId)
     {
         return await _cartDbContext.Carts
@@ -20,7 +20,7 @@ public class CartRepository : ICartRepository
             .ThenInclude(i => i.Item)
             .FirstOrDefaultAsync(c => c.Id == cartId);
     }
-
+    
     public async Task<IEnumerable<Cart?>> GetAllCartsAsync()
     {
         return await _cartDbContext.Carts
@@ -28,19 +28,19 @@ public class CartRepository : ICartRepository
             .ThenInclude(i => i.Item)
             .ToListAsync();
     }
-
+    
     public async Task AddCartAsync(Cart cart)
     {
         await _cartDbContext.Carts.AddAsync(cart);
         await _cartDbContext.SaveChangesAsync();
     }
-
+    
     public async Task UpdateCartAsync(Cart cart)
     {
         _cartDbContext.Carts.Update(cart);
         await _cartDbContext.SaveChangesAsync();
     }
-
+    
     public async Task DeleteCartAsync(Guid cartId)
     {
         var cart = await _cartDbContext.Carts.FindAsync(cartId);
@@ -50,13 +50,13 @@ public class CartRepository : ICartRepository
             await _cartDbContext.SaveChangesAsync();
         }
     }
-
+    
     public async Task AddCartItemAsync(CartItem cartItem)
     {
         await _cartDbContext.CartItems.AddAsync(cartItem);
         await _cartDbContext.SaveChangesAsync();
     }
-
+    
     public async Task RemoveCartItemAsync(Guid cartId, Guid itemId)
     {
         var cartItem = await _cartDbContext.CartItems
@@ -66,6 +66,17 @@ public class CartRepository : ICartRepository
         {
             _cartDbContext.CartItems.Remove(cartItem);
             await _cartDbContext.SaveChangesAsync();
+        }
+    }
+
+    public async Task RemoveCartFromUser(Guid cartID, Guid userId)
+    {
+        var cart = await _cartDbContext.Carts.FirstOrDefaultAsync(c => c.Id == cartID && c.UserId == userId);
+
+        if (cart != null)
+        {
+            _cartDbContext.Remove(cart);
+           await _cartDbContext.SaveChangesAsync();
         }
     }
 }

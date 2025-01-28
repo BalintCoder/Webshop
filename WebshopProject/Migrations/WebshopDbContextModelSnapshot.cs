@@ -7,10 +7,10 @@ using WebshopProject.Data;
 
 #nullable disable
 
-namespace WebshopProject.Migrations.CartDb
+namespace WebshopProject.Migrations
 {
-    [DbContext(typeof(CartDbContext))]
-    partial class CartDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(WebshopDbContext))]
+    partial class WebshopDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -89,7 +89,7 @@ namespace WebshopProject.Migrations.CartDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("Items");
+                    b.ToTable("ItemModels");
                 });
 
             modelBuilder.Entity("WebshopProject.Backend.Models.CartItem", b =>

@@ -80,5 +80,15 @@ public class CartService : ICartService
         await _cartRepository.UpdateCartAsync(cart);
         return cart;
     }
-    
+
+    public async Task DeleteCartAsync(Guid cartId, Guid userId)
+    {
+        var cart = await _cartRepository.GetCartById(cartId);
+
+        if (cart == null || cart.UserId != userId)
+        {
+            throw new InvalidOperationException("Cart is not found or the user cannot be found");
+        }
+        await _cartRepository.DeleteCartAsync(cartId);
+    }
 }

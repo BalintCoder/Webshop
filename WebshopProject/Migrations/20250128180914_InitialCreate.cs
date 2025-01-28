@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace WebshopProject.Migrations.CartDb
+namespace WebshopProject.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCartMigration : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,7 +28,7 @@ namespace WebshopProject.Migrations.CartDb
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "ItemModel",
+                name: "ItemModels",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false),
@@ -42,7 +42,7 @@ namespace WebshopProject.Migrations.CartDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ItemModel", x => x.Id);
+                    table.PrimaryKey("PK_ItemModels", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -65,9 +65,9 @@ namespace WebshopProject.Migrations.CartDb
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CartItems_ItemModel_ItemId",
+                        name: "FK_CartItems_ItemModels_ItemId",
                         column: x => x.ItemId,
-                        principalTable: "ItemModel",
+                        principalTable: "ItemModels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -94,7 +94,7 @@ namespace WebshopProject.Migrations.CartDb
                 name: "Carts");
 
             migrationBuilder.DropTable(
-                name: "ItemModel");
+                name: "ItemModels");
         }
     }
 }

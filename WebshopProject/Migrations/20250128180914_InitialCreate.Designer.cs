@@ -8,11 +8,11 @@ using WebshopProject.Data;
 
 #nullable disable
 
-namespace WebshopProject.Migrations.CartDb
+namespace WebshopProject.Migrations
 {
-    [DbContext(typeof(CartDbContext))]
-    [Migration("20250123163111_InitialCartMigration")]
-    partial class InitialCartMigration
+    [DbContext(typeof(WebshopDbContext))]
+    [Migration("20250128180914_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -92,7 +92,7 @@ namespace WebshopProject.Migrations.CartDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("ItemModel");
+                    b.ToTable("ItemModels");
                 });
 
             modelBuilder.Entity("WebshopProject.Backend.Models.CartItem", b =>
