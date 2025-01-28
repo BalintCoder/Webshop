@@ -154,6 +154,6 @@ html, body {
     height: 90px; 
     position: fixed;
     top: 40px;
-    right: 490px;
+    left: 540px;
     z-index: 1000;
 }

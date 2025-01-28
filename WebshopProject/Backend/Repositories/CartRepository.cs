@@ -6,7 +6,7 @@ namespace WebshopProject.Backend.Repositories;
 
 public class CartRepository : ICartRepository
 {
-    private CartDbContext _cartDbContext;
+    private readonly CartDbContext _cartDbContext;
 
     public CartRepository(CartDbContext cartDbContext)
     {
@@ -21,7 +21,7 @@ public class CartRepository : ICartRepository
             .FirstOrDefaultAsync(c => c.Id == cartId);
     }
 
-    public async Task<IEnumerable<Cart>> GetAllCartsAsync()
+    public async Task<IEnumerable<Cart?>> GetAllCartsAsync()
     {
         return await _cartDbContext.Carts
             .Include(c => c.Items)
@@ -53,6 +53,14 @@ public class CartRepository : ICartRepository
 
     public async Task AddCartItemAsync(CartItem cartItem)
     {
+        
+        var item = await _cartDbContext.Set<ItemModel>().FindAsync(cartItem.ItemId);
+        if (item == null)
+        {
+            throw new Exception("Item not found");
+        }
+        
+        cartItem.Item = item;
         await _cartDbContext.CartItems.AddAsync(cartItem);
         await _cartDbContext.SaveChangesAsync();
     }
