@@ -5,7 +5,9 @@ import Loginpage from "./Components/Loginpage.jsx";
 import MainPage from "./Components/MainPage.jsx";
 import ProtectedRoute from "./Components/ProtectedRoute.jsx";
 import ItemDetails from "./Components/ItemDetails.jsx";
-
+import RegisterPage from "./Components/RegisterPage.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   
 
@@ -26,8 +28,10 @@ function App() {
                     }
                 />
                 <Route path="/item/:id" element={<ItemDetails />} />
+                <Route path="/register" element={<RegisterPage />}/>
 
             </Routes>
+            <ToastContainer position="top-center" autoClose={3000} />
             
         </BrowserRouter>
         

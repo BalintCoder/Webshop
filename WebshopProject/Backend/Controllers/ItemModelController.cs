@@ -32,7 +32,7 @@ public class ItemModelController : ControllerBase
         }
     }
     
-    [HttpGet("{id}"), Authorize(Roles = "Admin")]
+    [HttpGet("{id}"), Authorize(Roles = "User, Admin")]
     public async Task<ActionResult<ItemModel>> GetItemById(Guid id)
     {
         var item = await _itemModelService.GetItemByIdAsync(id);
