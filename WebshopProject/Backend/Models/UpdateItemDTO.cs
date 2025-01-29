@@ -15,4 +15,6 @@ public class UpdateItemDTO
     
     public string? Kind { get; set; }
     
+    public string? Description { get; set; }
+    
 }

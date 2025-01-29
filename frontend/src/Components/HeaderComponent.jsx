@@ -1,6 +1,7 @@
 import logophoto from "../Images/instaworking.png"
 import logophoto3 from "../Images/freal.png"
 import logophoto4 from "../Images/vingreenreal.png"
+import cart from "../Images/cart.png";
 export default function HeaderComponent ({ setFilter })
 {
 
@@ -32,6 +33,7 @@ export default function HeaderComponent ({ setFilter })
                     <img src={logophoto} alt="Logo" className="i" onClick={goToInsta}/>
                     <img src={logophoto3} alt="Logo3" className="f" onClick={goToFacebook}/>
                     <img src={logophoto4} alt="Logo3" className="v" onClick={goToVinted}/>
+                    <img src={cart} className="Cart-icon-main" alt="Cart"/>
                 </div>
                 <h1 className="headertitle">Hand Crafted WebShop</h1>
             </nav>

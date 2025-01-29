@@ -15,4 +15,6 @@ public class ItemModel
     public double Price { get; set; }
     
     public string? Kind { get; set; }
+    
+    public string? Description { get; set; }
 }
