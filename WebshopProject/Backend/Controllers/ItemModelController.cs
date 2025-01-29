@@ -54,7 +54,8 @@ public class ItemModelController : ControllerBase
                 Name = itemModel.Name,
                 Price = itemModel.Price,
                 Weight = itemModel.Weight,
-                Kind = itemModel.Kind
+                Kind = itemModel.Kind,
+                Description = itemModel.Description
 
             };
             await _itemModelService.AddItemAsync(newItem);
