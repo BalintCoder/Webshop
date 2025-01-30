@@ -7,6 +7,8 @@ import kep5remove from "../Images/kep5remove.png"
 import {useNavigate} from "react-router-dom";
 import kep6 from "../Images/kep6.png"
 import kep7 from "../Images/kep7.png"
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // 📌 Importálni kell a stílust
 export default function MainPageComponent({ filter }) {
     const [items, setItems] = useState([]);
     const navigate = useNavigate();
@@ -14,6 +16,11 @@ export default function MainPageComponent({ filter }) {
     const fetchItems = async () => {
         try {
             const token = localStorage.getItem("token");
+            if (!token)
+            {
+                toast.error("Your token has expired")
+                setTimeout(() => navigate("/"), 1000);
+            }
             const response = await fetch("/api/ItemModel/GetAll", {
                 method: "GET",
                 headers: {

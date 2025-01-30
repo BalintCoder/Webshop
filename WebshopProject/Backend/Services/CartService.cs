@@ -36,7 +36,7 @@ public class CartService : ICartService
             var newCartItem = new CartItem
             {
                 Id = Guid.NewGuid(),
-                CartId = dto.CartId,
+                CartId = cartId,
                 ItemId = dto.ItemId,
                 Quantity = dto.Quantity
             };
