@@ -23,12 +23,14 @@
 }
 
 .formContainer .emailContainer,
-.formContainer .passwordContainer {
+.formContainer .passwordContainer,
+.formContainer .UserNameContainer{
     margin-bottom: 1.5rem; 
 }
 
 .formContainer .emailContainer label,
-.formContainer .passwordContainer label {
+.formContainer .passwordContainer label,
+.formContainer .UserNameContainer label {
     font-weight: bold;
     margin-bottom: 0.5rem;
     display: block;
@@ -36,7 +38,8 @@
 }
 
 .formContainer .emailContainer input,
-.formContainer .passwordContainer input {
+.formContainer .passwordContainer input,
+.formContainer .UserNameContainer input{
     width: 100%;
     padding: 0.8rem;
     border: 1px solid #ccc;
@@ -46,7 +49,8 @@
 }
 
 .formContainer .emailContainer input:focus,
-.formContainer .passwordContainer input:focus {
+.formContainer .passwordContainer input:focus,
+.formContainer .UserNameContainer input.focus {
     outline: none;
     border-color: #007bff; 
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
@@ -74,5 +78,17 @@
 .formContainer .buttonholder button:active {
     background-color: #00408a;
     
+}
+
+.register-acc {
+    font-size: 17px;
+    position: absolute;
+    bottom: 370px;
+    right: 800px;
+    color: greenyellow;
+}
+
+p.register-acc a {
+    color: blue;
 }
 

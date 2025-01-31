@@ -1,12 +1,23 @@
 import {useEffect, useState} from "react";
 import "/src/Styling/mainpage.css"
-import kep from "../Images/kepremove.png"
-import kep3 from "../Images/kep3remove.png"
-import kep4removed from "../Images/kep4removed.png"
-import kep5remove from "../Images/kep5remove.png"
+// import kep from "../Images/kepremove.png"
+// import kep3 from "../Images/kep3remove.png"
+// import kep4removed from "../Images/kep4removed.png"
+// import kep5remove from "../Images/kep5remove.png"
 import {useNavigate} from "react-router-dom";
-import kep6 from "../Images/kep6.png"
-import kep7 from "../Images/kep7.png"
+// import kep6 from "../Images/kep6.png"
+// import kep7 from "../Images/kep7.png"
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// import kep8 from "../Images/new.png";
+// import kep9 from "../Images/necknew.png";
+// import kep10 from "../Images/freakingnew.png";
+// import kep11 from "../Images/neckagain.png";
+// import kep12 from "../Images/flowernew.png";
+// import kep13 from "../Images/newagain.png";
+// import kep14 from "../Images/pairnew.png";
+// import kep15 from "../Images/thatsnew.png";
+import MainItemImage from "./MainItemImage.jsx";
 export default function MainPageComponent({ filter }) {
     const [items, setItems] = useState([]);
     const navigate = useNavigate();
@@ -14,6 +25,11 @@ export default function MainPageComponent({ filter }) {
     const fetchItems = async () => {
         try {
             const token = localStorage.getItem("token");
+            if (!token)
+            {
+                toast.error("Your token has expired")
+                setTimeout(() => navigate("/"), 1000);
+            }
             const response = await fetch("/api/ItemModel/GetAll", {
                 method: "GET",
                 headers: {
@@ -58,24 +74,7 @@ export default function MainPageComponent({ filter }) {
                         <h3>{item.name}</h3>
                     </div>
                     <div className="image-container">
-                        {item.name === "Ear Shellring" && (
-                            <img src={kep} alt={`${item.name}`} className="item-image" />
-                        )}
-                        {item.name === "Flowerous Pendant" && (
-                            <img src={kep4removed} alt={`${item.name}`} className="item-image" />
-                        )}
-                        {item.name === "Mistirous Pendant" && (
-                            <img src={kep3} alt={`${item.name}`} className="item-image" />
-                        )}
-                        {item.name === "The West" && (
-                            <img src={kep5remove} alt={`${item.name}`} className="item-image" />
-                        )}
-                        {item.name === "The Mariposa" && (
-                            <img src={kep6} alt={`${item.name}`} className="item-image" />
-                        )}
-                        {item.name === "The BlackPansy" && (
-                            <img src={kep7} alt={`${item.name}`} className="item-image" />
-                        )}
+                        <MainItemImage itemName={item.name} />
                     </div>
                 </div>
             ))}

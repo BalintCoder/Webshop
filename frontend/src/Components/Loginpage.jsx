@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styling/LoginPage.css"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Loginpage () {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -28,6 +31,9 @@ export default function Loginpage () {
            console.log(token)
           
            localStorage.setItem("token", token)
+           toast.success("Login successful!", { position: "top-center" });
+
+           // Navigáció késleltetéssel
            navigate("/mainPage");
        } catch (error) {
            console.error("Login error:", error.message);
@@ -44,6 +50,10 @@ export default function Loginpage () {
                     <input type="email" id="emailId" name="emailName" value={email}
                            onChange={(e) => setEmail(e.target.value)}
                            required placeholder="Your Email..."/>
+
+                    <p className="register-acc">
+                        <a href="/register" className="register-link">Register here:</a>
+                    </p>
                 </div>
 
                 <div className="passwordContainer">
