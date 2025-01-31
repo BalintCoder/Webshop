@@ -68,12 +68,57 @@
 }
 
 .Cart-icon {
-    width: 90px;  /* Kisebb méret */
-    height: 90px; /* Kisebb méret */
+    width: 90px;  
+    height: 90px; 
     position: fixed;
-    top: 100px;
-    right: 220px;
+    top: 10px;
+    right: 80px;
     z-index: 1000;
 }
 
+.only4 {
+    background-color: beige;
+    padding: 60px; 
+    border-radius: 16px; 
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    max-width: 600px; 
+    margin: 30px auto; 
+    border: 3px solid #ccc; 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
 
+.only4:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.35); 
+}
+
+.only4 h3 {
+    margin: 0;
+    font-size: 1.5rem; 
+    color: #222; 
+    font-weight: bold;
+}
+
+
+.details2 p {
+    background-color: #d6d9b3; 
+    padding: 20px; 
+    border-radius: 12px; 
+    font-size: 1.2rem; 
+    font-weight: 500; 
+    color: #444; 
+    text-align: justify; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+    margin: 20px auto; 
+    max-width: 700px; 
+    border-left: 5px solid #555; 
+    transition: transform 0.3s ease-in-out;
+}
+
+.details2 p:hover {
+    transform: scale(1.02); 
+}
