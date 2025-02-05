@@ -7,6 +7,7 @@ export default function CartModal ({isOpen, onClose}) {
 
     const [cartItems, setCartItems] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [maxPrice, setMaxPrice] = useState(0);
     
     useEffect(() => {
         if (isOpen)
@@ -14,7 +15,6 @@ export default function CartModal ({isOpen, onClose}) {
             fetchCartItmes()
         }
     }, [isOpen])
-    
     
     
     const fetchCartItmes = async () => {
@@ -35,6 +35,8 @@ export default function CartModal ({isOpen, onClose}) {
             {
                 const data = await carResponse.json()
                 setCartItems(data.items || [])
+                const totalPrice = data.items.reduce((acc, item) => acc + (item.quantity * item.itemPrice), 0);
+                setMaxPrice(totalPrice);
             } else {
                 console.error("Failed to fetch cart items");
             }
@@ -60,14 +62,18 @@ export default function CartModal ({isOpen, onClose}) {
                         {cartItems.map((item) => (
                             <li key={item.id} className="cart-item">
                                 <div className="modal-details">
-                                    <span>{item.itemName}</span>
-                                    <span>- {item.quantity}x - {item.quantity * item.itemPrice} Ft</span>
+                                    <span className="modal-item-name">{item.itemName}</span>
+                                    <span className="quantity">{item.quantity}x</span>
+                                    <span className="price">{item.quantity * item.itemPrice} Ft</span>
                                 </div>
                                 <MainItemImage itemName={item.itemName}/>
                             </li>
+
                         ))}
                     </ul>
+
                 )}
+                <h1 className="total"> Total:{maxPrice} Ft</h1>
             </div>
         </div>
     )

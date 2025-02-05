@@ -148,7 +148,9 @@ const ItemDetails = () => {
                     {loading ? "Adding to Cart..." : "Add to Cart"}
                 </button>
             </div>
+            <div className="cart-modal">
             <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+            </div>
         </div>
     );
 };

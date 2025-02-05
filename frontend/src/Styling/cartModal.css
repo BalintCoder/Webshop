@@ -32,3 +32,37 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+.modal-item-name
+{
+    font-family: "Times New Roman";
+    font-size: 32px;
+}
+
+.modal-details {
+    font-family: "Times New Roman";
+    font-size: 32px;
+    text-align: center;
+    position: relative;
+    top: 140px; /* Lejjebb mozgatja az elemet */
+}
+
+.quantity
+{
+    position: relative;
+    left: 10px;
+}
+
+.price
+{
+    position: relative;
+    left: 20px;
+}
+
+.total
+{
+    position: relative;
+    
+    text-align: right;
+    right: 40px;
+}

@@ -2,7 +2,7 @@ import logophoto from "../Images/instaworking.png"
 import logophoto3 from "../Images/freal.png"
 import logophoto4 from "../Images/vingreenreal.png"
 import cart from "../Images/cart.png";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import CartModal from "./CartModal.jsx";
 export default function HeaderComponent ({ setFilter })
 {
@@ -21,6 +21,16 @@ export default function HeaderComponent ({ setFilter })
     const handleSearchChange = (e) => {
         setFilter(e.target.value.toLowerCase());
     }
+
+    useEffect(() => {
+        if (isCartOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            
+            document.body.style.overflow = "auto";
+        }
+        
+    }, [isCartOpen]);
     
     return (
         <header className="header">
@@ -38,7 +48,9 @@ export default function HeaderComponent ({ setFilter })
                     <img src={cart} onClick={() => setIsCartOpen(true)} className="Cart-icon-main" alt="Cart"/>
                 </div>
                 <h1 className="headertitle">Hand Crafted WebShop</h1>
+                <div className="cart-modal">
                 <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+                </div>
             </nav>
         </header>
     )
