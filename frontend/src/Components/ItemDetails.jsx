@@ -6,10 +6,12 @@ import {getUserIdFromToken} from "./GetUserIdFromToken.jsx";
 import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ItemDetailsImage from "./ItemDetailsImage.jsx";
+import CartModal from "./CartModal"; 
 const ItemDetails = () => {
     const { id } = useParams();
     const [item, setItem] = useState(null);
     const[loading, setLoading] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -139,13 +141,14 @@ const ItemDetails = () => {
                 </div>
             </div>
             <div className="CartIcon">
-                <img src={cart} className="Cart-icon" alt="Cart"/>
+                <img src={cart} className="Cart-icon" onClick={() => setIsCartOpen(true)} alt="Cart"/>
             </div>
             <div>
                 <button className="cartButton" onClick={handleAddToCart} disabled={loading}>
                     {loading ? "Adding to Cart..." : "Add to Cart"}
                 </button>
             </div>
+            <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
         </div>
     );
 };
