@@ -80,8 +80,30 @@
     right: 500px;
     bottom: 70px;
     
+    
 }
 
 .item-remove-button {
     background-color: red;
+    cursor: pointer;
 }
+
+.delete-cart-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+    position: fixed; 
+    right: 930px; 
+    bottom: 225px; 
+    z-index: 100; 
+}
+

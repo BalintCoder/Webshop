@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import "../Styling/cartModal.css";
 import { getUserIdFromToken } from "./GetUserIdFromToken.jsx";
 import MainItemImage from "./MainItemImage.jsx";
+import { toast } from "react-toastify";
 
 export default function CartModal ({isOpen, onClose}) {
 
     const [cartItems, setCartItems] = useState([]);
     const [loading, setLoading] = useState(false);
     const [maxPrice, setMaxPrice] = useState(0);
+    const [cartId, setCartId] = useState(null);
+    const[button, setButton] = useState(true)
     
     useEffect(() => {
         if (isOpen)
@@ -35,6 +38,7 @@ export default function CartModal ({isOpen, onClose}) {
             {
                 const data = await carResponse.json()
                 setCartItems(data.items || [])
+                setCartId(data.id);
                 const totalPrice = data.items.reduce((acc, item) => acc + (item.quantity * item.itemPrice), 0);
                 setMaxPrice(totalPrice);
             } else {
@@ -101,6 +105,44 @@ export default function CartModal ({isOpen, onClose}) {
         }
     };
     
+    
+    const deleteCart = async () => {
+        
+        const token = localStorage.getItem('token')
+        const userId = getUserIdFromToken()
+
+        let carResponse = await fetch(`/api/Cart/get-cart-by-userId?userId=${userId}`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        });
+        const cartData = await carResponse.json()
+        
+        if (cartData.id === cartId)
+        {
+            const response = await fetch(`/api/Cart/remove-cart-from-user?cartId=${cartId}&userId=${userId}`,{
+                method:'DELETE',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            })
+            
+            if (response.ok)
+            {
+                setCartItems([])
+                toast.success("purchasing was successful, hope you will like the item")
+                setButton(cartData.items.length > 1)
+            } else {
+                console.error("Failed to delete cart:", response.status);
+            }
+        }
+        
+        
+    }
+    
     return (
         <div className="modal-overlay">
             <div className="modal-content">
@@ -116,7 +158,9 @@ export default function CartModal ({isOpen, onClose}) {
                             <li key={item.id} className="cart-item">
                                 <div className="modal-details">
                                     <div className="item-remove">
-                                        <button onClick={() => deleteItem(item.itemId)} title="Delete item" className="item-remove-button">X</button>
+                                        <button onClick={() => deleteItem(item.itemId)} title="Delete item"
+                                                className="item-remove-button">X
+                                        </button>
                                     </div>
                                     <span className="modal-item-name">{item.itemName}</span>
                                     <span className="quantity">{item.quantity}x</span>
@@ -129,6 +173,11 @@ export default function CartModal ({isOpen, onClose}) {
                         ))}
                     </ul>
 
+                )}
+                {button && (
+                    <div className="delete-cart">
+                        <button onClick={() => deleteCart(cartId)} className="delete-cart-button" value={button}>Purchase</button>
+                    </div>
                 )}
                 <h1 className="total"> Total:{maxPrice} Ft</h1>
             </div>
