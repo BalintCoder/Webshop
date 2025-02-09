@@ -56,7 +56,7 @@
 .price
 {
     position: relative;
-    left: 20px;
+    left: 500px;
 }
 
 .total
@@ -65,4 +65,23 @@
     
     text-align: right;
     right: 40px;
+}
+
+.realprice
+{
+    position: relative;
+    left: 20px;
+}
+
+.item-remove
+{
+    position: relative;
+    
+    right: 500px;
+    bottom: 70px;
+    
+}
+
+.item-remove-button {
+    background-color: red;
 }
