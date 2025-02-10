@@ -88,7 +88,6 @@ public class CartController : ControllerBase
                 ItemPrice = i.Item.Price,
             }).ToList()
         };
-        Console.WriteLine($"Items count: {cartWithItems.Items.Count()}");
         return Ok(cartWithItems);
     }
 
