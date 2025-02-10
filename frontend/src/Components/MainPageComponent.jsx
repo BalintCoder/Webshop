@@ -1,22 +1,9 @@
 import {useEffect, useState} from "react";
 import "/src/Styling/mainpage.css"
-// import kep from "../Images/kepremove.png"
-// import kep3 from "../Images/kep3remove.png"
-// import kep4removed from "../Images/kep4removed.png"
-// import kep5remove from "../Images/kep5remove.png"
 import {useNavigate} from "react-router-dom";
-// import kep6 from "../Images/kep6.png"
-// import kep7 from "../Images/kep7.png"
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import kep8 from "../Images/new.png";
-// import kep9 from "../Images/necknew.png";
-// import kep10 from "../Images/freakingnew.png";
-// import kep11 from "../Images/neckagain.png";
-// import kep12 from "../Images/flowernew.png";
-// import kep13 from "../Images/newagain.png";
-// import kep14 from "../Images/pairnew.png";
-// import kep15 from "../Images/thatsnew.png";
+
 import MainItemImage from "./MainItemImage.jsx";
 export default function MainPageComponent({ filter }) {
     const [items, setItems] = useState([]);
