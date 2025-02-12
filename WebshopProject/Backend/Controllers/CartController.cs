@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using K4os.Compression.LZ4.Engine;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +22,8 @@ public class CartController : ControllerBase
         public async Task<IActionResult> CreateCart(Guid userId)
         {
 
+            // var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value; 
+            
             var cart = await _cartService.CreateCartForUserAsync(userId);
             return Ok(cart);
         }

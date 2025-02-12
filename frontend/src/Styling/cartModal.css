@@ -44,7 +44,7 @@
     font-size: 32px;
     text-align: center;
     position: relative;
-    top: 140px; /* Lejjebb mozgatja az elemet */
+    top: 140px;
 }
 
 .quantity
