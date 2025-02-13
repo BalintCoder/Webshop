@@ -37,4 +37,9 @@ public class ItemModelService : IItemModelService
     {
         await _itemRepository.DeleteItemAsync(id);
     }
+
+    public Task<ItemModel> GetItemByName(string name)
+    {
+        return _itemRepository.GetItemByNameAsync(name);
+    }
 }

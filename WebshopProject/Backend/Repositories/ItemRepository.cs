@@ -57,5 +57,8 @@ public class ItemRepository : IItemRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    
+    public async Task<ItemModel> GetItemByNameAsync(string name)
+    {
+        return await _dbContext.ItemModels.FirstOrDefaultAsync(i => i.Name == name);
+    }
 }
