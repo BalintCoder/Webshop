@@ -13,4 +13,6 @@ public interface IItemModelService
     Task UpdateItem(Guid id, UpdateItemDTO updateItemDto);
     
     Task DeleteItemAsync(Guid id);
+
+    Task<ItemModel?> GetItemByName(string name);
 }

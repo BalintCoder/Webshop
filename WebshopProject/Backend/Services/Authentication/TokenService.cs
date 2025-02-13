@@ -10,7 +10,7 @@ namespace WebshopProject.Backend.Services.Authentication;
 
 public class TokenService : ITokenService
 {
-    private const int ExpirationMinutes = 30;
+    private const int ExpirationMinutes = 60;
     public string CreateToken(IdentityUser user, string role)
     {
         var expiration = DateTime.UtcNow.AddMinutes(ExpirationMinutes);

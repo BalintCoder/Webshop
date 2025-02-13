@@ -46,6 +46,13 @@ public class ItemModelController : ControllerBase
         Console.WriteLine("AddItem endpoint called");
         try
         {
+            var existingItem = await _itemModelService.GetItemByName(itemModel.Name);
+
+            if (existingItem != null)
+            {
+                return Conflict($"An item with the name \"{itemModel.Name}\" already exists.");
+            }
+            
             var newItem = new ItemModel
             {
                 Id = Guid.NewGuid(),
@@ -87,6 +94,12 @@ public class ItemModelController : ControllerBase
     {
         try
         {
+            var existingItem = await _itemModelService.GetItemByName(updateItemDto.Name);
+            if (existingItem != null && existingItem.Id != ItemId)
+            {
+                return Conflict($"An item with the name \"{updateItemDto.Name}\" already exists.");
+            }
+            
             await _itemModelService.UpdateItem(ItemId, updateItemDto);
             return NoContent();
         }
@@ -96,6 +109,23 @@ public class ItemModelController : ControllerBase
            
         }
         
+    }
+
+    [HttpGet("get-item-by-name"),Authorize(Roles = "Admin")]
+
+    public async Task<IActionResult> GetItemByName(string name)
+    {
+        try
+        {
+            var item = await _itemModelService.GetItemByName(name);
+
+            return Ok(item);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
     
 }
