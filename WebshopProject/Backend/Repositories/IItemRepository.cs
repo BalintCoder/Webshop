@@ -9,6 +9,5 @@ public interface IItemRepository
     Task AddItemAsync(ItemModel item);
     Task UpdateItemAsync(Guid guid, UpdateItemDTO updateItemDto);
     Task DeleteItemAsync(Guid id);
-
-
+    Task<ItemModel> GetItemByNameAsync(string name);
 }
