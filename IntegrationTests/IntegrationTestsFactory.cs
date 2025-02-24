@@ -7,7 +7,7 @@ using WebshopProject.Data;
 
 namespace IntegrationTests;
 
-public class WebshopProjectWebApplicationFactory : WebApplicationFactory<Program>
+public class IntegrationTestsFactory : WebApplicationFactory<Program>
 {
     private readonly string _dbName = Guid.NewGuid().ToString();
 
@@ -42,3 +42,4 @@ public class WebshopProjectWebApplicationFactory : WebApplicationFactory<Program
         });
     }
 }
+
