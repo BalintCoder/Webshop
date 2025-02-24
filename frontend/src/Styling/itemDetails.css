@@ -3,7 +3,7 @@
     display: flex; /*grid*/
     padding: 15px;
     margin: 0;
-    flex-direction: column; 
+    flex-direction: column;
     
 }
 
@@ -41,6 +41,7 @@
 
 .individualitem2 {
     padding: 20px; 
+    
     
    
 }
@@ -114,11 +115,18 @@
     text-align: justify; 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
     margin: 20px auto; 
-    max-width: 700px; 
+    max-width: 1000px; 
     border-left: 5px solid #555; 
     transition: transform 0.3s ease-in-out;
 }
 
 .details2 p:hover {
     transform: scale(1.02); 
+}
+
+.description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }

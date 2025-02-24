@@ -99,11 +99,12 @@ export default function AdminPage ()
             if (data) {
                 setItem(data);
                 setItemId(data.id);
-            } else {
+            }
+            else {
                 console.error("No data received");
             }
         } catch (e) {
-            console.error("Cannot fetch this item", e);
+            toast.error(`Cannot find this item: ${name}`, e)
         }
     };
 
@@ -146,6 +147,9 @@ export default function AdminPage ()
             console.log("Update successful, but no JSON response");
         }
         toast.success(`you have updated the ${item.name} successfully`)
+        setItem(null);
+        setItemId(null)
+        
     }
     
     const handleDelete = async () => {
@@ -163,6 +167,9 @@ export default function AdminPage ()
         }
         
         toast.success(`You have successfully deleted ${item.name}`)
+        setItem(null);
+        setItemId(null)
+        setItemName(null)
     }
 
     return (
@@ -182,8 +189,17 @@ export default function AdminPage ()
                            onChange={handleChange} className="input"/>
                     <input type="text" name="kind" placeholder="kind of the item" value={formData.kind}
                            onChange={handleChange} className="input"/>
-                    <textarea name="description" placeholder="description of the item" value={formData.description}
-                              onChange={handleChange} className="input"/>
+                    <textarea
+                        name="description"
+                        placeholder="Description of the item"
+                        value={formData.description}
+                        onChange={handleChange}
+                        className="input"
+                        maxLength={500}
+                        wrap="soft"
+                        style={{wordBreak: "break-word", overflowWrap: "break-word", whiteSpace: "pre-wrap"}}
+                    />
+                    <p>{formData.description.length}/200</p>
                     <button onClick={handleAddingNewItem} className="form-button">Add new Item</button>
                 </div>
             </div>
@@ -198,15 +214,28 @@ export default function AdminPage ()
 
             {item && (
                 <div className="item-form">
-                    <input type="text" name="name" value={item.name} onChange={handleUpdateChange}/>
-                    <input type="text" name="img" value={item.img} onChange={handleUpdateChange}/>
-                    <input type="number" name="weight" value={item.weight} onChange={handleUpdateChange}/>
-                    <input type="text" name="madeOf" value={item.madeOf} onChange={handleUpdateChange}/>
-                    <input type="number" name="price" value={item.price} onChange={handleUpdateChange}/>
-                    <input type="text" name="kind" value={item.kind} onChange={handleUpdateChange}/>
-                    <textarea name="description" value={item.description} onChange={handleUpdateChange}/>
-                    <button  className="updating-button" onClick={updateItem}>Update</button>
+                    <input type="text" name="name" value={item.name} placeholder="item name..."
+                           onChange={handleUpdateChange}/>
+                    <input type="text" name="img" value={item.img} placeholder="item img..."
+                           onChange={handleUpdateChange}/>
+                    <input type="number" name="weight" value={item.weight} placeholder="item weigth..."
+                           onChange={handleUpdateChange}/>
+                    <input type="text" name="madeOf" value={item.madeOf} placeholder="item was made of..."
+                           onChange={handleUpdateChange}/>
+                    <input type="number" name="price" value={item.price} placeholder="item price..."
+                           onChange={handleUpdateChange}/>
+                    <input type="text" name="kind" value={item.kind} placeholder="item kind..."
+                           onChange={handleUpdateChange}/>
+                    <textarea name="description" value={item.description} placeholder="description..."
+                              onChange={handleUpdateChange}
+                              style={{wordBreak: "break-word", overflowWrap: "break-word", whiteSpace: "pre-wrap"}}
+                              maxLength={200}
+                              wrap="soft"/>
+
+                    <button className="updating-button" onClick={updateItem}>Update</button>
                     <button className="delete-button" onClick={handleDelete}>Delete</button>
+
+                    <p>{item.description.length}/200</p>
 
                 </div>
             )}

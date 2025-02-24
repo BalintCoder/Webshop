@@ -130,7 +130,9 @@ const ItemDetails = () => {
                         <ItemDetailsImage itemName={item.name} />
                     </div>
                     <div className="details2">
+                        <div className="description">
                         <p>Description: {item.description}</p>
+                        </div>
                         <div className="only4">
                         <h3>Weight: {item.weight}g</h3>
                         <h3>Material: {item.madeOf}</h3>
