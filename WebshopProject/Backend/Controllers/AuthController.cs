@@ -21,7 +21,7 @@ public class AuthController : ControllerBase
         if (!result.Succsess)
         {
             AddErrors(result);
-            return BadRequest(ModelState);
+            return Unauthorized(ModelState);
         }
 
         return CreatedAtAction(nameof(Register), new RegistrationResponse(result.Email, result.UserName));
@@ -38,19 +38,17 @@ public class AuthController : ControllerBase
     [HttpPost("Login")]
     public async Task<ActionResult<AuthResponse>> Authenticate([FromBody] AuthRequest request)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
+        
         var result = await _authenticationService.LoginAsync(request.Email, request.Password);
         if (!result.Succsess)
         {
             AddErrors(result);
-            return BadRequest(ModelState);
+            return Unauthorized(ModelState); // UnAuthorized 
         }
 
         return Ok(new AuthResponse(result.Email, result.UserName, result.Token));
         
     }
+
+    
 }

@@ -10,7 +10,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 using WebshopProject.Backend.Services.Authentication;
 
-DotNetEnv.Env.Load();
+namespace WebshopProject;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -124,3 +130,6 @@ app.UseAuthorization();
 
 app.UseHttpsRedirection();
 app.Run();
+    }
+}
+

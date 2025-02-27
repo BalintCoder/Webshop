@@ -71,4 +71,7 @@ public class AuthService : IAuthService
         result.ErrorMessages.Add("Bad credentials", "Invalid password");
         return result;
     }
+
+
+    
 }
