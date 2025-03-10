@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using WebshopProject.Backend.Models;
 using WebshopProject.Data;
 
 namespace IntegrationTests;
@@ -14,6 +15,8 @@ public class IntegrationTestsFactory : WebApplicationFactory<WebshopProject.Prog
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         Environment.SetEnvironmentVariable("JWT_SECRET", "L7bGMUiuph2lV22u4qCmlhof3XakPqNdH4aQTY6Uiu");
+        Environment.SetEnvironmentVariable("JWT_VALID_AUDIENCE", "theyreallyhavetobetssshesameddfagainchangedwontagain");
+        Environment.SetEnvironmentVariable("JWT_VALID_ISSUER", "theyreallyhavetobetssshesameddfagainchangedwontagain");
         builder.ConfigureServices(services =>
         {
             var webshopDbDescriptor = services.SingleOrDefault(d =>
@@ -52,7 +55,42 @@ public class IntegrationTestsFactory : WebApplicationFactory<WebshopProject.Prog
             userContext.Database.EnsureCreated();
 
             SeedIdentityData(scopedServices).GetAwaiter().GetResult();
+            SeedItemData(scopedServices).GetAwaiter().GetResult();
         });
+    }
+
+    private async Task SeedItemData(IServiceProvider services)
+    {
+        var webshopContext = services.GetRequiredService<WebshopDbContext>();
+
+        if (!await webshopContext.ItemModels.AnyAsync())
+        {
+            await webshopContext.ItemModels.AddRangeAsync(
+                new ItemModel
+                {
+                    Name = "item1",
+                    Description = "asdasad",
+                    Img = "sdfgds",
+                    Kind = "sadsasd",
+                    MadeOf = "laskll",
+                    Price = 98,
+                    Weight = 89,
+                    Id = Guid.NewGuid()
+                },
+                new ItemModel
+                {
+                    Name = "item2",
+                    Description = "aaa",
+                    Img = "sd",
+                    Kind = "asda",
+                    MadeOf = "asa",
+                    Price = 987,
+                    Weight = 891,
+                    Id = Guid.NewGuid()
+                }
+            );
+            await webshopContext.SaveChangesAsync();
+        }
     }
 
     private async Task SeedIdentityData(IServiceProvider services)
@@ -86,3 +124,5 @@ public class IntegrationTestsFactory : WebApplicationFactory<WebshopProject.Prog
         }
     }
 }
+
+

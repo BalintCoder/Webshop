@@ -89,6 +89,16 @@ builder.Services
                 Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET"))
                 ),
         };
+        options.IncludeErrorDetails = true;
+        options.Events = new JwtBearerEvents
+        {
+            OnChallenge = context =>
+            {
+                context.HandleResponse();
+                context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                return Task.CompletedTask;
+            }
+        };
     });
 
 builder.Services

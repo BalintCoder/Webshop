@@ -43,8 +43,41 @@ public class AuthControllerIntegrationTests
         var responseContent = await response.Content.ReadAsStringAsync();
         Assert.Contains("integrationtest@example.com", responseContent);
         Assert.Contains("IntegrationUser", responseContent);
+        Assert.NotEqual("IntegrationUser2222", responseContent);
         
 
+    }
+    
+    [Fact]
+    public async Task RegisterUser_MissingFields_ReturnsBadRequest()
+    {
+        var request = new
+        {
+            Email = "", 
+            UserName = "TestUser",
+            Password = "ValidPassword123!"
+        };
+
+        var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
+        var response = await _client.PostAsync("/Auth/Register", content);
+
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
+
+    [Fact]
+    public async Task RegisTerUser_ShortPassword_ReturnBadRequest()
+    {
+        var request = new
+        {
+            Email = "integrationtest@example.com",
+            UserName = "IntegrationUser",
+            Password = "t"
+        };
+
+        var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
+        var response = await _client.PostAsync("Auth/Register", content);
+        
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
     }
     
     [Fact]
@@ -70,7 +103,25 @@ public class AuthControllerIntegrationTests
 
         var token = tokenElement.GetString();
         Assert.False(string.IsNullOrEmpty(token), "The JWT token is empty or null!");
+        Assert.Contains("test@example.com", responseContent);
     }
-    
+
+    [Fact]
+    public async Task LoginUser_InvalidEmail()
+    {
+        var request = new
+        {
+            Email = "test@exampleaa.com",
+            Password = "Test@123"
+        };
+
+        var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
+        
+        var response = await _client.PostAsync("/Auth/Login", content);
+        var responseContent = await response.Content.ReadAsStringAsync();
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+        Assert.Contains("Invalid email or password", responseContent);
+
+    }
     
 }

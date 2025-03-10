@@ -17,11 +17,12 @@ public class AuthController : ControllerBase
     [HttpPost("Register")]
     public async Task<ActionResult<RegistrationResponse>> Register(RegistrationRequest request)
     {
-        var result = await _authenticationService.RegisterAsync(request.Email, request.UserName, request.Password, "User");
+        var result = await _authenticationService
+            .RegisterAsync(request.Email, request.UserName, request.Password, "User");
         if (!result.Succsess)
         {
             AddErrors(result);
-            return Unauthorized(ModelState);
+            return BadRequest(ModelState);
         }
 
         return CreatedAtAction(nameof(Register), new RegistrationResponse(result.Email, result.UserName));
@@ -43,7 +44,7 @@ public class AuthController : ControllerBase
         if (!result.Succsess)
         {
             AddErrors(result);
-            return Unauthorized(ModelState); // UnAuthorized 
+            return Unauthorized(ModelState); 
         }
 
         return Ok(new AuthResponse(result.Email, result.UserName, result.Token));
