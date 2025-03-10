@@ -2,6 +2,8 @@ import {useNavigate} from "react-router-dom";
 import MainPageComponent from "./MainPageComponent.jsx";
 import HeaderComponent from "./HeaderComponent.jsx";
 import {useState} from "react";
+import "/src/Styling/logout.css";
+
 export default function MainPage ()
 {
     
@@ -18,7 +20,7 @@ export default function MainPage ()
                 <HeaderComponent setFilter={setFilter} />
                 <MainPageComponent filter={filter}/>
             </h1>
-            <button onClick={handleLogOut}>Logout</button>
+            <button className="logout" onClick={handleLogOut}>Logout</button>
             
         </div>
 
