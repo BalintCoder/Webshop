@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5195', // Backend szerver URL-je
+        target: 'http://localhost:8080', // Backend szerver URL-je
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''), // API prefix eltávolítása
       },

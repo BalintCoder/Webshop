@@ -19,10 +19,26 @@
     container_name: webshop-backend
     depends_on:
       - webshop-db
+    env_file:
+        - ./WebshopProject/.env
     environment:
-      - ConnectionStrings__DefaultConnection=Server=webshop-db;Database=webshopdb;User=root;Password=P@ssw0rd2024!MySQL;
+      - ConnectionString=Server=webshop-db;Database=webshopdb;User=root;Password=P@ssw0rd2024!MySQL;
     ports:
-      - "8080:8080"  
+      - "8080:8080"
+      
+  webshop-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: webshop-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - API_URL=http://webshop-backend:8080
+    depends_on:
+      - webshop-backend
+      
+      
     
 volumes:
   webshop-db-data:

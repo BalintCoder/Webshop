@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using DotNetEnv;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 using WebshopProject.Backend.Services.Authentication;
+using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
 
 namespace WebshopProject;
 
@@ -17,6 +19,7 @@ public class Program
     public static void Main(string[] args)
     {
         DotNetEnv.Env.Load();
+        Console.WriteLine(Environment.GetEnvironmentVariable("JWT_SECRET"));
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,14 +66,14 @@ builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddScoped<ICartService, CartService>();
 
 builder.Services.AddDbContext<WebshopDbContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("WebshopDb")?? throw new Exception()));
+    options.UseMySQL(GetConnectionString(builder.Configuration)?? throw new Exception()));
 
 builder.Services.AddDbContext<UserContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("WebshopDb") 
+    options.UseMySQL(GetConnectionString(builder.Configuration) 
                      ?? throw new Exception("WebshopDb connection string is not configured!")));
 
 
-
+    
 
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -141,5 +144,19 @@ app.UseAuthorization();
 app.UseHttpsRedirection();
 app.Run();
     }
+
+    public static string GetConnectionString(ConfigurationManager manager)
+    {
+        var envVariable = Environment.GetEnvironmentVariable("ConnectionString");
+
+        if (string.IsNullOrEmpty(envVariable))
+        {
+           return manager.GetConnectionString("WebshopDb");
+        }
+
+        return envVariable;
+    }
+    
+    
 }
 

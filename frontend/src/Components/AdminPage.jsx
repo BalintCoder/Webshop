@@ -195,7 +195,7 @@ export default function AdminPage ()
                         value={formData.description}
                         onChange={handleChange}
                         className="input"
-                        maxLength={200}
+                        maxLength={200} 
                         wrap="soft"
                         style={{wordBreak: "break-word", overflowWrap: "break-word", whiteSpace: "pre-wrap"}}
                     />
