@@ -11,6 +11,8 @@
       - "3306:3306"
     volumes:
       - webshop-db-data:/var/lib/mysql
+    networks:
+      - webshop-network  
 
   webshop-backend:
     build:
@@ -20,12 +22,14 @@
     depends_on:
       - webshop-db
     env_file:
-        - ./WebshopProject/.env
+      - ./WebshopProject/.env
     environment:
       - ConnectionString=Server=webshop-db;Database=webshopdb;User=root;Password=P@ssw0rd2024!MySQL;
     ports:
       - "8080:8080"
-      
+    networks:
+      - webshop-network  
+
   webshop-frontend:
     build:
       context: ./frontend
@@ -37,8 +41,12 @@
       - API_URL=http://webshop-backend:8080
     depends_on:
       - webshop-backend
-      
-      
-    
+    networks:
+      - webshop-network  
+
 volumes:
   webshop-db-data:
+
+networks:
+  webshop-network:
+    driver: bridge  
