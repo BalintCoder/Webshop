@@ -39,6 +39,9 @@ export default function AdminPage ()
             [e.target.name]: e.target.value,
         });
     }
+    
+    
+    
 
     const handleUpdateChange = (e) => {
         setItem((prevItem) => ({
