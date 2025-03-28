@@ -27,6 +27,8 @@
       - ConnectionString=Server=webshop-db;Database=webshopdb;User=root;Password=P@ssw0rd2024!MySQL;
     ports:
       - "8080:8080"
+    volumes:
+      - ./Uploads:/app/Uploads
     networks:
       - webshop-network  
 
@@ -46,6 +48,7 @@
 
 volumes:
   webshop-db-data:
+  webshop-uploads:
 
 networks:
   webshop-network:

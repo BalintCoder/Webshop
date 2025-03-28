@@ -89,6 +89,7 @@ public class CartController : ControllerBase
                 i.Quantity,
                 ItemName = i.Item.Name,  
                 ItemPrice = i.Item.Price,
+                ItemImg = i.Item.Img
             }).ToList()
         };
         return Ok(cartWithItems);

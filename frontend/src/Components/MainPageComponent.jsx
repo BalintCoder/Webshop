@@ -61,7 +61,7 @@ export default function MainPageComponent({ filter }) {
                         <h3>{item.name}</h3>
                     </div>
                     <div className="image-container">
-                        <MainItemImage itemName={item.name} />
+                        <MainItemImage img={item.img} />
                     </div>
                 </div>
             ))}
