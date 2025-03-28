@@ -127,7 +127,7 @@ const ItemDetails = () => {
                         <h3>{item.name}</h3>
                     </div>
                     <div className="image-container2">
-                        <ItemDetailsImage itemName={item.name} />
+                        <ItemDetailsImage img={item.img} />
                     </div>
                     <div className="details2">
                         <div className="description">

@@ -156,6 +156,7 @@ export default function CartModal ({isOpen, onClose}) {
                     <ul>
                         {cartItems.map((item) => (
                             <li key={item.id} className="cart-item">
+                                {console.log(item)}
                                 <div className="modal-details">
                                     <div className="item-remove">
                                         <button onClick={() => deleteItem(item.itemId)} title="Delete item"
@@ -167,7 +168,7 @@ export default function CartModal ({isOpen, onClose}) {
                                     <span className="realprice">{item.itemPrice}Ft</span>
                                     <span className="price">{item.quantity * item.itemPrice} Ft</span>
                                 </div>
-                                <MainItemImage itemName={item.itemName}/>
+                                <MainItemImage img={item.itemImg} />
                             </li>
 
                         ))}
