@@ -8,6 +8,7 @@ using WebshopProject.Backend.Services;
 using WebshopProject.Data;
 using DotNetEnv;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 using WebshopProject.Backend.Services.Authentication;
 using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
@@ -129,6 +130,17 @@ authenticationSeeder.AddAdmin();
 
 app.MapControllers();
 
+var uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+if (!Directory.Exists(uploadsPath))
+{
+    Directory.CreateDirectory(uploadsPath);
+}
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(uploadsPath),
+    RequestPath = "/images"
+});
 
 
 // Configure the HTTP request pipeline.
@@ -137,6 +149,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseAuthentication();
 app.UseAuthorization();

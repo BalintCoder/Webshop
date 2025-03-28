@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebshopProject.Backend.ClassHelpers;
 using WebshopProject.Backend.Models;
 using WebshopProject.Backend.Services;
 
@@ -9,10 +10,13 @@ namespace WebshopProject.Backend.Controllers;
 public class ItemModelController : ControllerBase
 {
     private readonly IItemModelService _itemModelService;
+    
 
     public ItemModelController(IItemModelService itemModelService)
     {
         _itemModelService = itemModelService;
+
+        
     }
 
 
@@ -41,13 +45,13 @@ public class ItemModelController : ControllerBase
 
 
     [HttpPost("AddNewItem"), Authorize(Roles = "Admin")]
-    public async Task<IActionResult> AddItem([FromBody] ItemModel itemModel)
+    public async Task<IActionResult> AddItem([FromForm] ItemModel itemModel)
     {
         Console.WriteLine("AddItem endpoint called");
         try
         {
             var existingItem = await _itemModelService.GetItemByName(itemModel.Name);
-
+    
             if (existingItem != null)
             {
                 return Conflict($"An item with the name \"{itemModel.Name}\" already exists.");
@@ -63,7 +67,7 @@ public class ItemModelController : ControllerBase
                 Weight = itemModel.Weight,
                 Kind = itemModel.Kind,
                 Description = itemModel.Description
-
+    
             };
             await _itemModelService.AddItemAsync(newItem);
             return CreatedAtAction(nameof(GetItemById), new { id = newItem.Id }, newItem); 
@@ -73,7 +77,7 @@ public class ItemModelController : ControllerBase
             return StatusCode(500, "An error occurred while adding the item.");
         }
     }
-
+    
     [HttpDelete("{ItemId}"), Authorize(Roles = "Admin")]
     public async Task<IActionResult> DeleteItem(Guid ItemId)
     {
@@ -127,5 +131,16 @@ public class ItemModelController : ControllerBase
             throw;
         }
     }
+    
+    [HttpPost("upload-image"), Authorize(Roles = "Admin")]
+    public async Task<IActionResult> UploadImage(IFormFile file)
+    {
+        var fileName = new UploadHandeling().UploadPhoto(file);
+        if (fileName.Contains("Extention") || fileName.Contains("MaximumSize"))
+        {
+            return BadRequest(fileName); 
+        }
+        return Ok(new { fileName });
+    } 
     
 }

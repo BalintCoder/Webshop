@@ -9,7 +9,8 @@ export default defineConfig({
     port: 5173, 
     proxy: {
       '/api': {
-        target: 'http://webshop-backend:8080', 
+        target: 'http://webshop-backend:8080',
+        // target: 'http://localhost:5195',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''), 
       },
