@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -25,8 +26,8 @@ public class TokenService : ITokenService
 
     private JwtSecurityToken CreateJwtToken(List<Claim> claims, SigningCredentials credentials, DateTime expiration) =>
         new(
-            Environment.GetEnvironmentVariable("JWT_VALID_ISSUER"),
-            Environment.GetEnvironmentVariable("JWT_VALID_AUDIENCE"),
+            GetConfigurationStrings("JWT_VALID_ISSUER"),
+            GetConfigurationStrings("JWT_VALID_AUDIENCE"),
             claims,
             expires: expiration,
             signingCredentials: credentials
@@ -69,5 +70,23 @@ public class TokenService : ITokenService
             ),
             SecurityAlgorithms.HmacSha256
         );
+    }
+    
+    public static string GetConfigurationStrings(string ConfigurationValue)
+    {
+        var defaultValue = "L7bGMUiuph2lV22u4qCmltod3XakPqNdH8UQTY6Uiu";
+        
+        var value = Environment.GetEnvironmentVariable(ConfigurationValue);
+
+        if (string.IsNullOrEmpty(value))
+        {
+            Debug.WriteLine($"That configuration value:" +
+                            $"{ConfigurationValue} has not been set up yet it just uses a default value. Please set it for production");
+            return defaultValue;
+        }
+
+        return value;
+       
+
     }
 }
