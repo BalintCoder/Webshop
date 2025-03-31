@@ -1,4 +1,5 @@
 using System.Configuration;
+using System.Diagnostics;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -87,10 +88,10 @@ builder.Services
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = Environment.GetEnvironmentVariable("JWT_VALID_ISSUER"),
-            ValidAudience = Environment.GetEnvironmentVariable("JWT_VALID_AUDIENCE"),
+            ValidIssuer = GetConfigurationStrings("JWT_VALID_ISSUER"),
+            ValidAudience = GetConfigurationStrings("JWT_VALID_AUDIENCE"),
             IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET"))
+                Encoding.UTF8.GetBytes(GetConfigurationStrings("JWT_SECRET"))
                 ),
         };
         options.IncludeErrorDetails = true;
@@ -123,6 +124,8 @@ builder.Services
 var app = builder.Build();
 
 using var scope = app.Services.CreateScope();
+scope.ServiceProvider.GetRequiredService<WebshopDbContext>().Database.Migrate();
+scope.ServiceProvider.GetRequiredService<UserContext>().Database.Migrate();
 var authenticationSeeder = scope.ServiceProvider.GetRequiredService<AuthenticationSeeder>();
 authenticationSeeder.AddRoles();
 authenticationSeeder.AddAdmin();
@@ -169,7 +172,24 @@ app.Run();
 
         return envVariable;
     }
-    
+
+    public static string GetConfigurationStrings(string ConfigurationValue)
+    {
+        var defaultValue = "L7bGMUiuph2lV22u4qCmltod3XakPqNdH8UQTY6Uiu";
+        
+        var value = Environment.GetEnvironmentVariable(ConfigurationValue);
+
+        if (string.IsNullOrEmpty(value))
+        {
+            Debug.WriteLine($"That configuration value:" +
+                            $"{ConfigurationValue} has not been set up yet it just uses a default value. Please set it for production");
+            return defaultValue;
+        }
+
+        return value;
+       
+
+    }
     
 }
 

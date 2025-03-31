@@ -9,13 +9,13 @@ export default function HeaderComponent ({ setFilter })
     const [isCartOpen, setIsCartOpen] = useState(false);
 
     const goToInsta = () => {
-        window.open("https://www.instagram.com/gardosbalint/", "_blank");
+        window.open("https://www.instagram.com/", "_blank");
     };
     const goToFacebook = () => {
-        window.open("https://www.facebook.com/balint.gardos/", "_blank");
+        window.open("https://www.facebook.com//", "_blank");
     };
     const goToVinted = () => {
-        window.open("https://www.vinted.hu/member/122433559", "_blank");
+        window.open("https://www.vinted.hu/", "_blank");
     };
     
     const handleSearchChange = (e) => {
