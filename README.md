@@ -14,7 +14,7 @@ This project started as an idea to create a webshop for my girlfriend's handcraf
 
 ## Installation
 
-1. You have to install git (https://git-scm.com/downloads) and after that docker desktop (https://www.docker.com/products/docker-desktop/)
+1. You have to download both git (https://git-scm.com/downloads) and  docker desktop (https://www.docker.com/products/docker-desktop/)
 2. Install them.
 3. After both of them are installed run the docker desktop applicaiton.
 4. Create a folder for your application (eg. Project)
