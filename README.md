@@ -27,6 +27,14 @@ This project started as an idea to create a webshop for my girlfriend's handcraf
 11.Right now all you have to do is just type in the search bar the following: ```localhost:5173/``` and you will see the application running, and ready to be logged in or create a new account.
 
 
+### Admin Login (Demo Credentials)
+To access the admin panel and create new items, use the following credentials:
+
+- **Email:** admin@admin.com  
+- **Password:** admin123  
+
+⚠️ These credentials are for demonstration purposes only.
+
 ## Contributing
 
 BalintCoder
