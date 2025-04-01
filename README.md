@@ -6,7 +6,7 @@ This project started as an idea to create a webshop for my girlfriend's handcraf
 
 ## Built using
 - React/ Vite
-- Tailwind CSS
+- CSS
 - ASP.NET
 - MySQL
 - Docker
