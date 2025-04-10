@@ -24,7 +24,9 @@ This project started as an idea to create a webshop for my girlfriend's handcraf
 5. Go to the folder where you want to store your application.
 6. Click on the address bar at the top, type cmd, and press Enter to open a command prompt in that folder.
 7. After that copy paste it to there the following: ``` git clone https://github.com/BalintCoder/Webshop.git ```
-8. Then click on the route again to be highlited and type cmd again, type ```cd WebshopProject``` press enter, then type in the following: ```echo. > .env``` It will create an empty ```.env``` file which is needed for running the application.
+8. Then click on the route again to be highlited and type cmd again, type ```cd WebshopProject``` press enter, then type in the following:   ```bash
+ echo. > .env
+   ```  It will create an empty ```.env``` file which is needed for running the application.
 9. Last but not least, go back to the folder called ```Webshop``` with the comment in cmd ```cd..``` and type in the following ``` docker compose up --build``` It will create the containers for the application(database, backend-server, fronted)
 10. After they were created go back to the docker desktop and check if all of the containers are running. Usually after the installation the backend-server container stops running, dont be afraid just start the container and it will run afterwards.
 11.Right now all you have to do is just type in the search bar the following: ```localhost:5173/``` and you will see the application running, and ready to be logged in or create a new account.
