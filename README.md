@@ -5,11 +5,14 @@
 This project started as an idea to create a webshop for my girlfriend's handcrafted itmes, utilizing all the knowledge I have acquired. As the title suggests this application should be used to advertise items that are handcrafted. When you installed your application and logged in as admin, you will be able to use the admin site, "/admin" to create new items. Where you can add its details or photo. The application also includes a shopping cart feature, allowing users to add items they want to purchase and complete their orders or delete them if not needed. Additionally, users can create new accounts and make purchases with them as well. Right now the application is not responsive yet, however when i will have the time for it, i will change that! 
 
 ## Built using
-- React/Vite
-- CSS
-- ASP.NET
-- MySQL
-- Docker
+<p align="left">
+  <a href="https://react.dev/" target="_blank"><img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React"/></a>
+  <a href="https://vitejs.dev/" target="_blank"><img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite"/></a>
+  <a href="https://dotnet.microsoft.com/en-us/" target="_blank"><img src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET"/></a>
+  <a href="https://www.mysql.com/" target="_blank"><img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/></a>
+  <a href="https://www.docker.com/" target="_blank"><img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/></a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS"/></a>
+</p>
 
 
 ## Installation
