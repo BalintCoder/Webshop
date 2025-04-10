@@ -5,7 +5,7 @@
 This project started as an idea to create a webshop for my girlfriend's handcrafted itmes, utilizing all the knowledge I have acquired. As the title suggests this application should be used to advertise items that are handcrafted. When you installed your application and logged in as admin, you will be able to use the admin site, "/admin" to create new items. Where you can add its details or photo. The application also includes a shopping cart feature, allowing users to add items they want to purchase and complete their orders or delete them if not needed. Additionally, users can create new accounts and make purchases with them as well. Right now the application is not responsive yet, however when i will have the time for it, i will change that! 
 
 ## Built using
-- React/ Vite
+* [![React][React.js]][React-url]
 - CSS
 - ASP.NET
 - MySQL
