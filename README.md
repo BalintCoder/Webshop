@@ -66,7 +66,7 @@ localhost:5173/
 
 You will see the application running and ready to be logged in or create a new account.
 
-### Admin Login (Demo Credentials)
+## Admin Login (Demo Credentials)
 To access the admin panel and create new items, use the following credentials:
 
 - **Email:** admin@admin.com  
