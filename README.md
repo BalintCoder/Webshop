@@ -76,4 +76,4 @@ To access the admin panel and create new items, use the following credentials:
 
 ## Contributing
 
-[![BalintCoder's GitHub Profile](https://img.shields.io/badge/GitHub-BalintCoder-blue?style=flat&logo=github&logoColor=white)](https://github.com/BalintCoder)
+[![BalintCoder's GitHub Profile](https://img.shields.io/badge/GitHub-BalintCoder-blue?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BalintCoder)
